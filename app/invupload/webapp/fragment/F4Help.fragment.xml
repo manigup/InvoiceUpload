@@ -1,0 +1,11 @@
+<SelectDialog
+    id="F4Help"
+    titleAlignment="Center"
+    xmlns="sap.m"
+    noDataText="No Data Found"
+    search="onF4HelpSearch"
+    confirm="onF4HelpConfirm"
+    cancel="onF4HelpClose"
+    draggable="true"
+    class="sapUiSizeCompact"
+/>

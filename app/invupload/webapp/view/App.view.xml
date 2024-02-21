@@ -1,0 +1,8 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <Shell id="_IDGenShell1">
+        <App id="app" />
+    </Shell>
+</mvc:View>

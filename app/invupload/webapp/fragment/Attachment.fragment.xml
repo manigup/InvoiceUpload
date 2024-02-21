@@ -1,0 +1,40 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        showHeader="false"
+        placement="Left"
+        modal="true"
+        titleAlignment="Center"
+        contentMinWidth="350px"
+        afterClose="onPopOverAfterClose"
+        id="attachPopover"
+    >
+        <UploadCollection
+            id="attachment"
+            items="{AttachModel>/results}"
+            uploadEnabled="false"
+        >
+            <items>
+                <UploadCollectionItem
+                    id="_IDGenUploadCollectionItem1"
+                    fileName="{AttachModel>Filename}"
+                    url="{AttachModel>Url}"
+                    visibleEdit="false"
+                    visibleDelete="false"
+                />
+            </items>
+        </UploadCollection>
+        <footer>
+            <OverflowToolbar id="_IDGenOverflowToolbar1">
+                <ToolbarSpacer id="_IDGenToolbarSpacer1" />
+                <Button
+                    id="_IDGenButton1"
+                    text="Close"
+                    press="onPopOverClosePress"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Popover>
+</core:FragmentDefinition>
