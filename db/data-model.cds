@@ -28,14 +28,14 @@ entity UploadInvoice : managed {
 entity Attachments : managed {
   key ReferenceNo : String;
   key ObjectId    : String;
-      Filetype    : String;
 
-      @Core.MediaType                  : Mediatype
-      @Core.ContentDisposition.Filename: Filename
-      Data        : LargeBinary;
+      @Core.MediaType: Mediatype
+      Data        : LargeBinary @Core.ContentDisposition.Filename: Filename;
+
+
+      Mediatype   : String;
 
       @Core.IsMediaType
-      Mediatype   : String;
       Filename    : String;
 }
 

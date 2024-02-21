@@ -11,12 +11,8 @@ service CatalogService {
     entity Hod     as projection on my.HodMaster;
 
 
-    entity Attachments @(restrict: [{
-        grant: [
-            'WRITE',
-            'UPDATE',
-            'DELETE'
-        ],
-        where: 'CreatedBy = $user'
-    }])            as projection on my.Attachments;
+    entity Attachments @(restrict: [{grant: [
+        'READ',
+        'WRITE',
+    ]}])           as projection on my.Attachments;
 }

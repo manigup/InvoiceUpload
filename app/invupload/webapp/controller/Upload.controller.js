@@ -38,14 +38,6 @@ sap.ui.define([
                 createFrag.open();
             },
 
-            onDialogEscapeHandler: function (oPromise) {
-                oPromise.reject();
-            },
-
-            onDialogCancel: function (evt) {
-                evt.getSource().getParent().destroy();
-            },
-
             onCreatePress: function (evt) {
                 this.dialogSource = evt.getSource();
                 if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "costCenter", "reason", "hod"]) && sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
@@ -208,7 +200,7 @@ sap.ui.define([
                         filters: [new Filter("ReferenceNo", "EQ", refNo)],
                         success: (data) => {
                             data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(ReferenceNo='" + item.ReferenceNo + "',ObjectId='" + item.ObjectId + "')/$value");
-                            var popOver = sap.ui.xmlfragment("sp.fiori.invupload.fragment.Attachment", this);
+                            var popOver = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Attachment", this);
                             sap.ui.getCore().byId("attachPopover").setModel(new JSONModel(data), "AttachModel");
                             this.getView().addDependent(popOver);
                             popOver.openBy(source);
@@ -255,6 +247,18 @@ sap.ui.define([
             onF4HelpConfirm: function (evt) {
                 this.f4Source.setValue(evt.getParameter("selectedItem").getTitle());
                 evt.getSource().destroy();
-            }
+            },
+
+            onDialogEscapeHandler: function (oPromise) {
+                oPromise.reject();
+            },
+
+            onDialogCancel: function (evt) {
+                evt.getSource().getParent().destroy();
+            },
+
+            onPopOverClosePress: function (evt) {
+                evt.getSource().getParent().getParent().destroy();
+            },
         });
     });

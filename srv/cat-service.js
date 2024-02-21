@@ -43,7 +43,6 @@ module.exports = cds.service.impl(async function () {
 
         req.data.ReferenceNo = reqData[0];
         req.data.Filename = reqData[1];
-        req.data.Filetype = req.data.Mediatype;
     });
 });
 
