@@ -8,8 +8,8 @@
       "service": "sap-approuter-userapi"
     },
     {
-      "source": "^/odata/(.*)$",
-      "target": "/odata/$1",
+      "source": "^/inv/(.*)$",
+      "target": "/inv/$1",
       "destination": "invoice_upload-srv-api",
       "authenticationType": "xsuaa",
       "csrfProtection": false
