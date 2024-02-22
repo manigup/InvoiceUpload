@@ -31,6 +31,7 @@
           "semanticObject": "invupload",
           "action": "manage",
           "title": "{{flpTitle}}",
+          "subTitle": "{{flpSubtitle}}",
           "icon": "sap-icon://upload",
           "signature": {
             "parameters": {},
