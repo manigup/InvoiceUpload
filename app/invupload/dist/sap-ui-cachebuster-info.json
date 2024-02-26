@@ -1,13 +1,13 @@
 {
-  "css/style.css": 1708502658928,
-  "Component.js": 1708542627537,
+  "index.html": 1708502658916,
+  "controller/Upload.controller.js": 1708933221692,
   "model/models.js": 1708502658924,
   "model/formatter.js": 1708538937992,
-  "controller/Upload.controller.js": 1708933221692,
-  "manifest.json": 1708934520310,
-  "Component-preload.js": 1708934520650,
-  "model/models-dbg.js": 1708502658924,
+  "manifest.json": 1708934849854,
+  "Component.js": 1708542627537,
+  "Component-preload.js": 1708934850035,
   "model/formatter-dbg.js": 1708538937992,
+  "model/models-dbg.js": 1708502658924,
   "controller/Upload-dbg.controller.js": 1708933221692,
   "Component-dbg.js": 1708542627537,
   "view/Upload.view.xml": 1708540252196,
@@ -17,6 +17,6 @@
   "fragment/F4Help.fragment.xml": 1708511311839,
   "fragment/Create.fragment.xml": 1708550503896,
   "fragment/Attachment.fragment.xml": 1708547139584,
-  "i18n/i18n.properties": 1708927512994,
-  "index.html": 1708502658916
+  "css/style.css": 1708502658928,
+  "i18n/i18n.properties": 1708927512994
 }

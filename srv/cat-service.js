@@ -27,19 +27,19 @@ module.exports = cds.service.impl(async function () {
             req.data.ReferenceNo = "INV01";
         }
 
-        // const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
+        const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
 
         // Creating dms folder
-        // await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.ReferenceNo);
+        await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.ReferenceNo);
     });
 
     this.before("CREATE", 'Attachments', async (req) => {
 
         const reqData = req.data.Filename.split("/");
 
-        // const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
+        const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
 
-        // req.data.ObjectId = await _uploadAttachment(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, reqData[0], reqData[1]);
+        req.data.ObjectId = await _uploadAttachment(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, reqData[0], reqData[1]);
 
         req.data.ReferenceNo = reqData[0];
         req.data.Filename = reqData[1];
