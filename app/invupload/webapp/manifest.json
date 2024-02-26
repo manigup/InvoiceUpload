@@ -32,7 +32,7 @@
           "action": "manage",
           "title": "{{flpTitle}}",
           "subTitle": "{{flpSubtitle}}",
-          "icon": "sap-icon://upload",
+          "icon": "sap-icon://my-sales-order",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
