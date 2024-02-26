@@ -199,7 +199,8 @@ sap.ui.define([
                     this.getView().getModel().read("/Attachments", {
                         filters: [new Filter("ReferenceNo", "EQ", refNo)],
                         success: (data) => {
-                            data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(ReferenceNo='" + item.ReferenceNo + "',ObjectId='" + item.ObjectId + "')/$value");
+                            // ,ObjectId='" + item.ObjectId + "'
+                            data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(ReferenceNo='" + item.ReferenceNo + "')/$value");
                             var popOver = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Attachment", this);
                             sap.ui.getCore().byId("attachPopover").setModel(new JSONModel(data), "AttachModel");
                             this.getView().addDependent(popOver);
