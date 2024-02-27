@@ -1,14 +1,14 @@
 <Dialog
     id="_IDGenDialog1"
     xmlns:f="sap.ui.layout.form"
-    xmlns:u="sap.m.upload"
+    xmlns:upload="sap.m.upload"
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
     draggable="true"
     contentWidth="350px"
     contentHeight="350px"
     escapeHandler=".onDialogEscapeHandler"
-    title="Upload New Invoice"
+    title="Edit Invoice - {EditModel>/ReferenceNo}"
     titleAlignment="Center"
 >
     <content>
@@ -26,7 +26,7 @@
             <DatePicker
                 id="invDate"
                 valueFormat="yyyyMMdd"
-                value="{DataModel>/InvoiceDate}"
+                value="{EditModel>/InvoiceDate}"
             />
             <Label
                 id="_IDGenLabel2"
@@ -36,7 +36,8 @@
             />
             <Input
                 id="invNo"
-                value="{DataModel>/InvoiceNumber}"
+                value="{EditModel>/InvoiceNumber}"
+                enabled="false"
             />
             <Label
                 id="_IDGenLabel3"
@@ -47,7 +48,7 @@
             <Input
                 id="invAmmount"
                 type="Number"
-                value="{DataModel>/InvoiceAmount}"
+                value="{EditModel>/InvoiceAmount}"
             />
             <Label
                 id="_IDGenLabel4"
@@ -58,7 +59,7 @@
             <Input
                 id="gst"
                 type="Number"
-                value="{DataModel>/GST}"
+                value="{EditModel>/GST}"
             />
             <Label
                 id="_IDGenLabel5"
@@ -68,7 +69,7 @@
             />
             <Input
                 id="costCenter"
-                value="{DataModel>/CostCenter}"
+                value="{EditModel>/CostCenter}"
             />
             <Label
                 id="_IDGenLabel6"
@@ -79,7 +80,7 @@
             <TextArea
                 growing="true"
                 id="reason"
-                value="{DataModel>/Reason}"
+                value="{EditModel>/Reason}"
             />
             <Label
                 id="_IDGenLabel8"
@@ -92,7 +93,7 @@
                 valueHelpOnly="true"
                 showValueHelp="true"
                 valueHelpRequest="onF4Help($event,'HOD')"
-                value="{DataModel>/HodApprover}"
+                value="{EditModel>/HodApprover}"
             />
             <Label
                 id="_IDGenLabel7"
@@ -100,19 +101,29 @@
                 design="Bold"
                 text="Attachment"
             />
-            <u:UploadSet
+            <upload:UploadSet
                 id="attachment"
                 mode="None"
                 showIcons="false"
                 fileTypes="pdf,xlsx,doc,png,jpeg"
                 multiple="true"
-                instantUpload="false"
                 maxFileSize="10"
-                uploadCompleted="onUploadComplete"
+                uploadCompleted="onAttachmentUploadComplete"
                 beforeUploadStarts="onBeforeUploadStarts"
                 uploadButtonInvisible="false"
                 afterItemAdded="onAttachItemAdd"
-            />
+                items="{AttachmentModel>/}"
+            >
+                <upload:items>
+                    <upload:UploadSetItem
+                        id="_IDGenUploadSetItem1"
+                        fileName="{AttachmentModel>Filename}"
+                        mediaType="{AttachmentModel>Mediatype}"
+                        visibleEdit="false"
+                        visibleRemove="false"
+                    />
+                </upload:items>
+            </upload:UploadSet>
         </f:SimpleForm>
     </content>
     <beginButton>
@@ -120,7 +131,7 @@
             id="_IDGenButton1"
             type="Emphasized"
             text="Submit"
-            press="onCreatePress"
+            press="onEditPress"
         />
     </beginButton>
     <endButton>

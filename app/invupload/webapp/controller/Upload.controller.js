@@ -17,7 +17,9 @@ sap.ui.define([
             onInit: function () {
                 this.tblTemp = this.byId("uploadTblTemp").clone();
                 this.getView().setModel(new JSONModel({}), "DataModel");
+                this.getView().setModel(new JSONModel({}), "EditModel");
                 this.getView().setModel(new JSONModel({}), "DecisionModel");
+                this.getView().setModel(new JSONModel([]), "AttachmentModel");
             },
 
             onAfterRendering: function () {
@@ -38,6 +40,30 @@ sap.ui.define([
                 createFrag.open();
             },
 
+            onReferenceNoPress: function (evt) {
+                const obj = evt.getSource().getBindingContext().getObject();
+                const frag = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Edit", this);
+                this.getView().addDependent(frag);
+                this.getView().getModel("EditModel").setData(obj);
+                this.getView().getModel("EditModel").refresh(true);
+                this.refNo = obj.ReferenceNo;
+                this.getAttachments();
+                sap.ui.getCore().byId("attachment").setUploadUrl(this.getView().getModel().sServiceUrl + "/Attachments");
+                frag.open();
+            },
+
+            getAttachments: function () {
+                this.getView().getModel().read("/Attachments", {
+                    filters: [new Filter("ReferenceNo", "EQ", this.refNo)],
+                    success: data => {
+                        this.getView().getModel("AttachmentModel").setData(data.results);
+                        this.getView().getModel("AttachmentModel").refresh(true);
+                        BusyIndicator.hide();
+                    },
+                    error: () => BusyIndicator.hide()
+                });
+            },
+
             onCreatePress: function (evt) {
                 this.dialogSource = evt.getSource();
                 if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "costCenter", "reason", "hod"]) && sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
@@ -46,8 +72,34 @@ sap.ui.define([
                     setTimeout(() => {
                         this.getView().getModel().create("/Invoice", payload, {
                             success: (sData) => {
+                                this.toAddress = sData.HodApprover;
+                                this.ccAddress = sData.createdBy;
                                 this.refNo = sData.ReferenceNo;
                                 this.doAttachment();
+                            },
+                            error: () => BusyIndicator.hide()
+                        });
+                    }, 500);
+                } else {
+                    MessageBox.error("Please fill all required inputs to proceed");
+                }
+            },
+
+            onEditPress: function (evt) {
+                this.dialogSource = evt.getSource();
+                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "costCenter", "reason", "hod"])) {
+                    BusyIndicator.show();
+                    const payload = this.getView().getModel("EditModel").getData();
+                    setTimeout(() => {
+                        this.getView().getModel().update("/Invoice('" + this.refNo + "')", payload, {
+                            success: sData => {
+                                BusyIndicator.hide();
+                                MessageBox.success("Invoice " + sData.ReferenceNo + " updated successfully", {
+                                    onClose: () => {
+                                        this.dialogSource.getParent().destroy();
+                                        this.getData();
+                                    }
+                                });
                             },
                             error: () => BusyIndicator.hide()
                         });
@@ -127,7 +179,7 @@ sap.ui.define([
 
             takeAction: function () {
                 setTimeout(() => {
-                    this.getView().getModel().update("/Invoice(ReferenceNo='" + this.refNo + "')", this.payload, {
+                    this.getView().getModel().update("/Invoice('" + this.refNo + "')", this.payload, {
                         success: () => {
                             BusyIndicator.hide();
                             MessageBox.success("Action taken successfully", {
@@ -180,12 +232,21 @@ sap.ui.define([
                     BusyIndicator.hide();
                     MessageBox.success("Invoice uploaded successfully", {
                         onClose: () => {
+                            const content = "New invoice " + this.refNo + " uploaded.";
+                            this.sendEmailNotification(content);
                             this.getView().getModel("DataModel").setData({});
                             this.dialogSource.getParent().destroy();
                             this.getData();
                         }
                     });
                 } else {
+                    sap.ui.getCore().byId("attachment").uploadItem(this.items[0]);
+                    this.items.splice(0, 1);
+                }
+            },
+
+            onAttachmentUploadComplete: function () {
+                if (sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
                     sap.ui.getCore().byId("attachment").uploadItem(this.items[0]);
                     this.items.splice(0, 1);
                 }
@@ -199,8 +260,8 @@ sap.ui.define([
                     this.getView().getModel().read("/Attachments", {
                         filters: [new Filter("ReferenceNo", "EQ", refNo)],
                         success: (data) => {
-                            // ,ObjectId='" + item.ObjectId + "'
-                            data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(ReferenceNo='" + item.ReferenceNo + "')/$value");
+                            data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(ReferenceNo='"
+                                + item.ReferenceNo + "',ObjectId='" + item.ObjectId + "')/$value");
                             var popOver = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Attachment", this);
                             sap.ui.getCore().byId("attachPopover").setModel(new JSONModel(data), "AttachModel");
                             this.getView().addDependent(popOver);
@@ -261,5 +322,30 @@ sap.ui.define([
             onPopOverClosePress: function (evt) {
                 evt.getSource().getParent().getParent().destroy();
             },
+
+            sendEmailNotification: function (body) {
+                return new Promise((resolve, reject) => {
+                    let emailBody = `|| ${body} Kindly log-in with the link to take action.<br><br><a href="https://impautosuppdev.launchpad.cfapps.ap10.hana.ondemand.com/site/SP#invupload-manage?sap-ui-app-id-hint=saas_approuter_sap.fiori.invupload">CLICK HERE</a>`;
+                    var oModel = this.getView().getModel();
+                    var mParameters = {
+                        method: "GET",
+                        urlParameters: {
+                            subject: "Invoice Submission" + this.refNo,
+                            content: emailBody,
+                            toAddress: this.toAddress,
+                            ccAddress: this.ccAddress
+                        },
+                        success: function (oData) {
+                            console.log("Email sent successfully.");
+                            resolve(oData);
+                        },
+                        error: function (oError) {
+                            console.log("Failed to send email.");
+                            reject(oError);
+                        }
+                    };
+                    oModel.callFunction("/sendEmail", mParameters);
+                });
+            }
         });
     });

@@ -14,7 +14,7 @@
         <UploadCollection
             id="attachment"
             items="{AttachModel>/results}"
-            uploadEnabled="false"
+            uploadButtonInvisible="true"
         >
             <items>
                 <UploadCollectionItem

@@ -14,9 +14,12 @@ module.exports = cds.service.impl(async function () {
 
     this.before('CREATE', 'Invoice', async (req) => {
 
-        req.data.Status = "HAP"; // hod approval pending
+        const records = await cds.run(cds.parse.cql("Select InvoiceNumber,ReferenceNo from db.invoiceupload.UploadInvoice")),
+            duplicate = records.filter(item => item.InvoiceNumber === req.data.InvoiceNumber);
 
-        const records = await cds.run(cds.parse.cql("Select ReferenceNo from db.invoiceupload.UploadInvoice"));
+        if (duplicate.length > 0) {
+            req.reject(400, 'Invoice number already exist for reference number ' + duplicate[0].ReferenceNo);
+        }
 
         if (records.length > 0) {
             const ref = records[records.length - 1].ReferenceNo.split("INV"),
@@ -27,10 +30,20 @@ module.exports = cds.service.impl(async function () {
             req.data.ReferenceNo = "INV01";
         }
 
+        req.data.Status = "HAP"; // hod approval pending
+
         const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
 
         // Creating dms folder
         await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.ReferenceNo);
+    });
+
+    this.before('UPDATE', 'Invoice', async (req) => {
+
+        if (req.data.Status === "RBH" || req.data.Status === "RBF") {
+            req.data.Status = "HAP"
+        }
+
     });
 
     this.before("CREATE", 'Attachments', async (req) => {
@@ -43,6 +56,36 @@ module.exports = cds.service.impl(async function () {
 
         req.data.ReferenceNo = reqData[0];
         req.data.Filename = reqData[1];
+    });
+
+    //Email trigger
+    this.on('sendEmail', async (req) => {
+        const { subject, content, toAddress, ccAddress } = req.data;
+
+        const payload = {
+            Subject: subject,
+            Content: `Dear ${toAddress.split("@")[0]}, ${content} | | Regards | ImperialAuto`,
+            Seperator: "|",
+            ToAddress: toAddress,
+            CCAddress: ccAddress,
+            BCCAddress: "",
+            CreatedBy: "Manikandan"
+        };
+
+        try {
+            // Make the API request
+            await axios.post('https://imperialauto.co:84/IAIAPI.asmx/SendMail', payload, {
+                headers: {
+                    'Authorization': 'Bearer IncMpsaotdlKHYyyfGiVDg==',
+                    'Content-Type': 'application/json'
+                }
+            });
+            return `Email sent successfully.`;
+
+        } catch (error) {
+            console.error('Error:', error);
+            throw new Error('Failed to send email');
+        }
     });
 });
 
@@ -95,7 +138,6 @@ const _createFolder = async function (sdmUrl, jwtToken, repositoryId, folderName
             })
     })
 }
-
 
 const _uploadAttachment = async function (sdmUrl, jwtToken, repositoryId, folderName, fileName) {
     return new Promise((resolve, reject) => {
