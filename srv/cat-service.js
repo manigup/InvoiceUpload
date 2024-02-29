@@ -12,6 +12,14 @@ const sdmCredentials = {
 
 module.exports = cds.service.impl(async function () {
 
+    this.before('READ', 'Invoice', async (req) => {
+
+        const userID = req.user.id;
+
+        req.query.where(`createdBy = '${userID}' or HodApprover  = '${userID}' or FinanceApprover  = '${userID}' `);
+
+    });
+
     this.before('CREATE', 'Invoice', async (req) => {
 
         const records = await cds.run(cds.parse.cql("Select InvoiceNumber,ReferenceNo from db.invoiceupload.UploadInvoice")),
@@ -58,7 +66,6 @@ module.exports = cds.service.impl(async function () {
         req.data.Filename = reqData[1];
     });
 
-    //Email trigger
     this.on('sendEmail', async (req) => {
         const { subject, content, toAddress, ccAddress } = req.data;
 
@@ -71,9 +78,7 @@ module.exports = cds.service.impl(async function () {
             BCCAddress: "",
             CreatedBy: "Manikandan"
         };
-
         try {
-            // Make the API request
             await axios.post('https://imperialauto.co:84/IAIAPI.asmx/SendMail', payload, {
                 headers: {
                     'Authorization': 'Bearer IncMpsaotdlKHYyyfGiVDg==',
@@ -81,10 +86,8 @@ module.exports = cds.service.impl(async function () {
                 }
             });
             return `Email sent successfully.`;
-
         } catch (error) {
             console.error('Error:', error);
-            throw new Error('Failed to send email');
         }
     });
 });

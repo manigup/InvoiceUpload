@@ -87,7 +87,8 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {
-          "refreshAfterChange": false
+          "refreshAfterChange": false,
+          "useBatch": false
         }
       }
     },

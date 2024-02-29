@@ -6,7 +6,7 @@
 >
     <Page
         id="page"
-        title="List"
+        title="Invoice List"
         titleAlignment="Center"
     >
         <headerContent>
@@ -35,7 +35,7 @@
                         <Column
                             id="_IDGenColumn1"
                             hAlign="Center"
-                            width="6rem"
+                            width="5rem"
                         >
                             <Label
                                 id="_IDGenLabel1"
@@ -73,7 +73,7 @@
                         <Column
                             id="_IDGenColumn3"
                             hAlign="Center"
-                            width="7rem"
+                            width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -88,7 +88,7 @@
                         <Column
                             id="_IDGenColumn4"
                             hAlign="Center"
-                            width="7rem"
+                            width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -103,7 +103,7 @@
                         <Column
                             id="_IDGenColumn5"
                             hAlign="Center"
-                            width="7rem"
+                            width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -118,7 +118,7 @@
                         <Column
                             id="_IDGenColumn6"
                             hAlign="Center"
-                            width="6rem"
+                            width="5rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -236,9 +236,11 @@
                     <items>
                         <ColumnListItem id="uploadTblTemp">
                             <cells>
-                                <Text
-                                    id="_IDGenText1"
-                                    text="{ReferenceNo}"
+                                <ObjectIdentifier
+                                    id="_IDGenObjectIdentifier1"
+                                    title="{ReferenceNo}"
+                                    titleActive="{parts: [{path: 'Status'},{path: 'createdBy'}],formatter:'formatter.refNoLink'}"
+                                    titlePress="onReferenceNoPress"
                                 />
                                 <Text
                                     id="_IDGenText8"

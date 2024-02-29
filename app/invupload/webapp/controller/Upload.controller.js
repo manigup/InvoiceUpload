@@ -71,7 +71,7 @@ sap.ui.define([
                     const payload = this.getView().getModel("DataModel").getData();
                     setTimeout(() => {
                         this.getView().getModel().create("/Invoice", payload, {
-                            success: (sData) => {
+                            success: sData => {
                                 this.toAddress = sData.HodApprover;
                                 this.ccAddress = sData.createdBy;
                                 this.refNo = sData.ReferenceNo;
@@ -96,6 +96,10 @@ sap.ui.define([
                                 BusyIndicator.hide();
                                 MessageBox.success("Invoice " + sData.ReferenceNo + " updated successfully", {
                                     onClose: () => {
+                                        this.toAddress = payload.HodApprover;
+                                        this.ccAddress = payload.createdBy;
+                                        const content = "Invoice with refrence no. " + this.refNo + " updated by requestor.";
+                                        this.sendEmailNotification(content);
                                         this.dialogSource.getParent().destroy();
                                         this.getData();
                                     }
@@ -121,15 +125,21 @@ sap.ui.define([
                             this.payload = {};
                             if (obj.Status === "HAP" && selectedAction === "A") {
                                 this.payload.Status = "ABH"; // Approved by HOD & Pending with Finance
+                                this.toAddress = obj.FinanceApprover;
+                                this.ccAddress = obj.createdBy;
                                 this.openHodFrag();
                             } else if (obj.Status === "HAP" && selectedAction === "R") {
                                 this.payload.Status = "RBH"; // Rejected by HOD
+                                this.toAddress = obj.createdBy;
+                                this.ccAddress = obj.HodApprover;
                                 this.openHodFrag();
                             } else if (obj.Status === "ABH" && selectedAction === "A") {
                                 this.payload.Status = "ABF"; // Approved by Finance
                                 this.openFinFrag();
                             } else {
                                 this.payload.Status = "RBF"; // Rejected by Finance
+                                this.toAddress = obj.createdBy;
+                                this.ccAddress = obj.FinanceApprover;
                                 this.openFinFrag();
                             }
                         }
@@ -184,6 +194,16 @@ sap.ui.define([
                             BusyIndicator.hide();
                             MessageBox.success("Action taken successfully", {
                                 onClose: () => {
+                                    let content;
+                                    switch (this.payload.Status) {
+                                        case "ABH":
+                                            content = " approved by HOD.";
+                                        case "RBH":
+                                            content = " rejected by HOD.";
+                                        case "RBF":
+                                            content = " rejected by Finance.";
+                                    }
+                                    this.sendEmailNotification("Invoice with refrence no. " + this.refNo + content);
                                     this.dialogSource.getParent().destroy();
                                     this.getData();
                                 }
@@ -232,7 +252,7 @@ sap.ui.define([
                     BusyIndicator.hide();
                     MessageBox.success("Invoice uploaded successfully", {
                         onClose: () => {
-                            const content = "New invoice " + this.refNo + " uploaded.";
+                            const content = "New invoice with refrence no. " + this.refNo + " uploaded by requestor.";
                             this.sendEmailNotification(content);
                             this.getView().getModel("DataModel").setData({});
                             this.dialogSource.getParent().destroy();
@@ -325,25 +345,25 @@ sap.ui.define([
 
             sendEmailNotification: function (body) {
                 return new Promise((resolve, reject) => {
-                    let emailBody = `|| ${body} Kindly log-in with the link to take action.<br><br><a href="https://impautosuppdev.launchpad.cfapps.ap10.hana.ondemand.com/site/SP#invupload-manage?sap-ui-app-id-hint=saas_approuter_sap.fiori.invupload">CLICK HERE</a>`;
-                    var oModel = this.getView().getModel();
-                    var mParameters = {
-                        method: "GET",
-                        urlParameters: {
-                            subject: "Invoice Submission" + this.refNo,
-                            content: emailBody,
-                            toAddress: this.toAddress,
-                            ccAddress: this.ccAddress
-                        },
-                        success: function (oData) {
-                            console.log("Email sent successfully.");
-                            resolve(oData);
-                        },
-                        error: function (oError) {
-                            console.log("Failed to send email.");
-                            reject(oError);
-                        }
-                    };
+                    const emailBody = `|| ${body} Kindly log-in with the link to take your action.<br><br><a href="https://impautosuppdev.launchpad.cfapps.ap10.hana.ondemand.com/site/SP#invupload-manage?sap-ui-app-id-hint=saas_approuter_sap.fiori.invupload">CLICK HERE</a>`,
+                        oModel = this.getView().getModel(),
+                        mParameters = {
+                            method: "GET",
+                            urlParameters: {
+                                subject: "Invoice Submission",
+                                content: emailBody,
+                                toAddress: this.toAddress,
+                                ccAddress: this.ccAddress
+                            },
+                            success: function (oData) {
+                                console.log("Email sent successfully.");
+                                resolve(oData);
+                            },
+                            error: function (oError) {
+                                console.log("Failed to send email.");
+                                reject(oError);
+                            }
+                        };
                     oModel.callFunction("/sendEmail", mParameters);
                 });
             }

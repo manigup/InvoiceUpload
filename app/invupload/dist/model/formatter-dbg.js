@@ -59,5 +59,17 @@ formatter = {
         } else {
             return false;
         }
+    },
+    refNoLink: function (status, createdBy) {
+        if (status && createdBy) {
+            const logUser = this.getModel().getHeaders().loginId;
+            if ((status === 'RBH' || status === 'RBF') && logUser === createdBy) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
 };
