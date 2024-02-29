@@ -331,8 +331,12 @@ sap.ui.define([
                 evt.getSource().destroy();
             },
 
-            onDialogEscapeHandler: function (oPromise) {
-                oPromise.reject();
+            onF4HelpClose: function (evt) {
+                evt.getSource().destroy();
+            },
+
+            onDialogClose: function (evt) {
+                evt.getSource().destroy();
             },
 
             onDialogCancel: function (evt) {
