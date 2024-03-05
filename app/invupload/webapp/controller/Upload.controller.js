@@ -16,7 +16,7 @@ sap.ui.define([
 
             onInit: function () {
                 this.tblTemp = this.byId("uploadTblTemp").clone();
-                this.getView().setModel(new JSONModel({}), "DataModel");
+                this.getView().setModel(new JSONModel(), "DataModel");
                 this.getView().setModel(new JSONModel({}), "EditModel");
                 this.getView().setModel(new JSONModel({}), "DecisionModel");
                 this.getView().setModel(new JSONModel([]), "AttachmentModel");
@@ -36,6 +36,8 @@ sap.ui.define([
             onAddPress: function () {
                 const createFrag = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Create", this);
                 this.getView().addDependent(createFrag);
+                this.getView().getModel("DataModel").setData({});
+                this.getView().getModel("DataModel").refresh(true);
                 sap.ui.getCore().byId("attachment").setUploadUrl(this.getView().getModel().sServiceUrl + "/Attachments");
                 createFrag.open();
             },
@@ -151,6 +153,8 @@ sap.ui.define([
             openHodFrag: function () {
                 const remarksFrag = sap.ui.xmlfragment("sap.fiori.invupload.fragment.HodRemarks", this);
                 this.getView().addDependent(remarksFrag);
+                this.getView().getModel("DecisionModel").getData().WithoutPO = true;
+                this.getView().getModel("DecisionModel").refresh(true);
                 remarksFrag.open();
             },
 
@@ -163,10 +167,16 @@ sap.ui.define([
             onHodSubmit: function (evt) {
                 this.dialogSource = evt.getSource();
                 const data = this.getView().getModel("DecisionModel").getData(),
-                    reqFields = data.Action === "A" ? ["finance", "remarks"] : ["remarks"];
+                    reqFields = data.Action === "A" && data.WithoutPO === true ? ["finance", "remarks"] : ["remarks"];
                 if (this.validateReqFields(reqFields)) {
                     this.payload.HodRemarks = data.HodRemarks;
                     this.payload.FinanceApprover = data.FinanceApprover;
+                    this.payload.WithoutPO = data.WithoutPO;
+                    if (data.WithoutPO === false && data.Action === "A") {
+                        this.payload.Status = "APR";
+                    } else if (data.WithoutPO === false && data.Action === "R") {
+                        this.payload.Status = "REJ";
+                    }
                     this.takeAction();
                 } else {
                     MessageBox.error("Please fill all required inputs to proceed");

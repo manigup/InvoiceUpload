@@ -26,7 +26,7 @@ module.exports = cds.service.impl(async function () {
             duplicate = records.filter(item => item.InvoiceNumber === req.data.InvoiceNumber);
 
         if (duplicate.length > 0) {
-            req.reject(400, 'Invoice number already exist for reference number ' + duplicate[0].ReferenceNo);
+            req.reject(400, 'Duplicate invoice number');
         }
 
         if (records.length > 0) {
@@ -43,7 +43,7 @@ module.exports = cds.service.impl(async function () {
         const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
 
         // Creating dms folder
-        await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.ReferenceNo);
+        await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.InvoiceNumber);
     });
 
     this.before('UPDATE', 'Invoice', async (req) => {

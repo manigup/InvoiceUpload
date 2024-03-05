@@ -4,9 +4,9 @@
     xmlns="sap.m"
     draggable="true"
     contentWidth="300px"
-    escapeHandler=".onDialogEscapeHandler"
+    afterClose="onDialogClose"
     titleAlignment="Center"
-    title="{= ${DecisionModel>/Action} === 'A' ? 'Approval' : 'Rejection'}"
+    title="{= ${DecisionModel>/Action} === 'A' ? 'HOD Approval' : 'HOD Rejection'}"
 >
     <content>
         <f:SimpleForm
@@ -15,8 +15,20 @@
             layout="ResponsiveGridLayout"
         >
             <Label
-                id="_IDGenLabel1"
+                id="_IDGenLabel3"
                 required="true"
+                design="Bold"
+                text="Allow without PO"
+            />
+            <Switch
+                id="_IDGenSwitch1"
+                customTextOn="Yes"
+                customTextOff="No"
+                state="{DecisionModel>/WithoutPO}"
+            />
+            <Label
+                id="_IDGenLabel1"
+                required="{= ${DecisionModel>/WithoutPO} ? true : false}"
                 design="Bold"
                 text="Select Finance"
             />
@@ -27,6 +39,7 @@
                 valueHelpRequest="onF4Help($event,'FIN')"
                 visible="{= ${DecisionModel>/Action} === 'A'}"
                 value="{DecisionModel>/FinanceApprover}"
+                enabled="{= ${DecisionModel>/WithoutPO}}"
             />
             <Label
                 id="_IDGenLabel2"

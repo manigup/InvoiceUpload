@@ -16,10 +16,14 @@ formatter = {
                 case "HAP":
                     text = "HOD Approval Pending";
                     break;
+                case "APR":
+                    text = "Approved by HOD";
+                    break;
                 case "ABH":
                     text = "Approved by HOD & Pending with Finance";
                     break;
                 case "RBH":
+                case "REJ":
                     text = "Rejected by HOD";
                     break;
                 case "ABF":
@@ -37,6 +41,7 @@ formatter = {
         if (status) {
             switch (status) {
                 case "ABF":
+                case "APR":
                     state = "Success";
                     break;
                 case "HAP":

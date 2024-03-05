@@ -4,9 +4,9 @@
     xmlns="sap.m"
     draggable="true"
     contentWidth="300px"
-    escapeHandler=".onDialogEscapeHandler"
+    afterClose="onDialogClose"
     titleAlignment="Center"
-    title="{= ${DecisionModel>/Action} === 'A' ? 'Approval' : 'Rejection'}"
+    title="{= ${DecisionModel>/Action} === 'A' ? 'Finance Approval' : 'Finance Rejection'}"
 >
     <content>
         <f:SimpleForm
