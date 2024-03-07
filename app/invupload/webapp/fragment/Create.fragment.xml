@@ -42,12 +42,12 @@
                 id="_IDGenLabel3"
                 required="true"
                 design="Bold"
-                text="Invoice Amount"
+                text="Total Invoice Amount"
             />
             <Input
                 id="invAmmount"
                 type="Number"
-                value="{DataModel>/InvoiceAmount}"
+                value="{DataModel>/TotalInvoiceAmount}"
             />
             <Label
                 id="_IDGenLabel4"
@@ -64,12 +64,21 @@
                 id="_IDGenLabel5"
                 required="true"
                 design="Bold"
-                text="Cost Center"
+                text="Invoice Type"
             />
-            <Input
-                id="costCenter"
-                value="{DataModel>/CostCenter}"
-            />
+            <Select
+                id="invType"
+                selectedKey="{DataModel>/InvoiceType}"
+                forceSelection="false"
+                items="{/InvoiceType}"
+                change="onInvoiceTypeChange"
+            >
+                <core:Item
+                    id="_IDGenItem1"
+                    key="{Type}"
+                    text="{Type}"
+                />
+            </Select>
             <Label
                 id="_IDGenLabel6"
                 required="true"
@@ -83,16 +92,13 @@
             />
             <Label
                 id="_IDGenLabel8"
-                required="true"
                 design="Bold"
-                text="Select HOD"
+                text="Approver"
             />
             <Input
                 id="hod"
-                valueHelpOnly="true"
-                showValueHelp="true"
-                valueHelpRequest="onF4Help($event,'HOD')"
                 value="{DataModel>/HodApprover}"
+                enabled="false"
             />
             <Label
                 id="_IDGenLabel7"

@@ -16,14 +16,10 @@ formatter = {
                 case "HAP":
                     text = "HOD Approval Pending";
                     break;
-                case "APR":
-                    text = "Approved by HOD";
-                    break;
                 case "ABH":
                     text = "Approved by HOD & Pending with Finance";
                     break;
                 case "RBH":
-                case "REJ":
                     text = "Rejected by HOD";
                     break;
                 case "ABF":
@@ -41,7 +37,6 @@ formatter = {
         if (status) {
             switch (status) {
                 case "ABF":
-                case "APR":
                     state = "Success";
                     break;
                 case "HAP":
@@ -55,24 +50,35 @@ formatter = {
         }
         return state;
     },
-    checkApprovalAccess: function (status, hod, finance) {
-        const logUser = this.getModel().getHeaders().loginId;
-        if (status === "HAP" && hod === logUser) {
-            return true;
-        } else if (status === "ABH" && finance === logUser) {
-            return true;
-        } else {
-            return false;
-        }
-    },
-    refNoLink: function (status, createdBy) {
-        if (status && createdBy) {
-            const logUser = this.getModel().getHeaders().loginId;
-            if ((status === 'RBH' || status === 'RBF') && logUser === createdBy) {
+    checkApprovalAccess: function (status, hod) {
+        const finData = this.getModel("FinModel").getData(),
+            logUser = this.getModel().getHeaders().loginId;
+        if (finData.length > 0) {
+            if (status === "HAP" && hod === logUser) {
+                return true;
+            } else if (status === "ABH" && finData.findIndex(item => item.FinEmail === this.getModel().getHeaders().loginId) !== -1) {
                 return true;
             } else {
                 return false;
             }
+        } else {
+            return false;
+        }
+    },
+    invNoLink: function (status, createdBy) {
+        if (status && createdBy) {
+            if ((status === 'RBH' || status === 'RBF') && sap.ui.getCore().loginEmail === createdBy) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    },
+    addBtnVisible: function () {
+        if (this.getModel().getHeaders().loginType === "P") {
+            return true;
         } else {
             return false;
         }

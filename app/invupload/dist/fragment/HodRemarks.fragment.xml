@@ -15,33 +15,6 @@
             layout="ResponsiveGridLayout"
         >
             <Label
-                id="_IDGenLabel3"
-                required="true"
-                design="Bold"
-                text="Allow without PO"
-            />
-            <Switch
-                id="_IDGenSwitch1"
-                customTextOn="Yes"
-                customTextOff="No"
-                state="{DecisionModel>/WithoutPO}"
-            />
-            <Label
-                id="_IDGenLabel1"
-                required="{= ${DecisionModel>/WithoutPO} ? true : false}"
-                design="Bold"
-                text="Select Finance"
-            />
-            <Input
-                id="finance"
-                valueHelpOnly="true"
-                showValueHelp="true"
-                valueHelpRequest="onF4Help($event,'FIN')"
-                visible="{= ${DecisionModel>/Action} === 'A'}"
-                value="{DecisionModel>/FinanceApprover}"
-                enabled="{= ${DecisionModel>/WithoutPO}}"
-            />
-            <Label
                 id="_IDGenLabel2"
                 required="true"
                 design="Bold"

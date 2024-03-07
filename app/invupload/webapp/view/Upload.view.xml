@@ -1,5 +1,6 @@
 <mvc:View
     controllerName="sap.fiori.invupload.controller.Upload"
+    xmlns:fb="sap.ui.comp.filterbar"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:core="sap.ui.core"
     xmlns="sap.m"
@@ -16,14 +17,110 @@
                 text="Add"
                 icon="sap-icon://add"
                 press="onAddPress"
+                visible="{path:'',formatter:'formatter.addBtnVisible'}"
             />
         </headerContent>
         <content>
+            <fb:FilterBar
+                id="_IDGenFilterBar1"
+                useToolbar="false"
+                showFilterConfiguration="false"
+                search="getData"
+                showClearOnFB="true"
+                clear="onFilterClear"
+            >
+                <fb:filterItems>
+                    <fb:FilterItem
+                        id="_IDGenFilterItem1"
+                        name="A"
+                        label="Invoice Number"
+                    >
+                        <fb:control>
+                            <Input
+                                id="_IDGenInput1"
+                                value="{Filter>/InvoiceNumber}"
+                            />
+                        </fb:control>
+                    </fb:FilterItem>
+                    <fb:FilterItem
+                        id="_IDGenFilterItem2"
+                        name="B"
+                        label="Invoice Date"
+                    >
+                        <fb:control>
+                            <DatePicker
+                                id="_IDGenDatePicker1"
+                                valueFormat="yyyyMMdd"
+                                value="{Filter>/InvoiceDate}"
+                            />
+                        </fb:control>
+                    </fb:FilterItem>
+                    <fb:FilterItem
+                        id="_IDGenFilterItem3"
+                        name="C"
+                        label="Invoice Type"
+                    >
+                        <fb:control>
+                            <Select
+                                id="_IDGenSelect3"
+                                selectedKey="{Filter>/InvoiceType}"
+                                forceSelection="false"
+                                items="{/InvoiceType}"
+                            >
+                                <core:Item
+                                    id="_IDGenItem6"
+                                    key="{Type}"
+                                    text="{Type}"
+                                />
+                            </Select>
+                        </fb:control>
+                    </fb:FilterItem>
+                    <fb:FilterItem
+                        id="_IDGenFilterItem4"
+                        name="D"
+                        label="Status"
+                    >
+                        <fb:control>
+                            <Select
+                                id="_IDGenSelect2"
+                                forceSelection="false"
+                                selectedKey="{Filter>/Status}"
+                            >
+                                <core:Item
+                                    id="_IDGenItem4"
+                                    key="HAP"
+                                    text="HOD Approval Pending"
+                                />
+                                <core:Item
+                                    id="_IDGenItem5"
+                                    key="ABH"
+                                    text="Approved by HOD &amp; Pending with Finance"
+                                />
+                                <core:Item
+                                    id="_IDGenItem3"
+                                    key="RBH"
+                                    text="Rejected by HOD"
+                                />
+                                <core:Item
+                                    id="_IDGenItem7"
+                                    key="ABF"
+                                    text="Approved by Finance"
+                                />
+                                <core:Item
+                                    id="_IDGenItem8"
+                                    key="RBF"
+                                    text="Rejected by Finance"
+                                />
+                            </Select>
+                        </fb:control>
+                    </fb:FilterItem>
+                </fb:filterItems>
+            </fb:FilterBar>
             <ScrollContainer
                 id="_IDGenScrollContainer1"
                 horizontal="true"
                 vertical="true"
-                height="100%"
+                height="80%"
             >
                 <Table
                     id="uploadTbl"
@@ -33,26 +130,14 @@
                 >
                     <columns>
                         <Column
-                            id="_IDGenColumn1"
+                            id="_IDGenColumn3"
                             hAlign="Center"
-                            width="5rem"
+                            width="6rem"
                         >
                             <Label
-                                id="_IDGenLabel1"
+                                id="_IDGenLabel3"
                                 design="Bold"
-                                text="Reference No."
-                                wrapping="true"
-                            />
-                        </Column>
-                        <Column
-                            id="_IDGenColumn11"
-                            hAlign="Center"
-                            width="7rem"
-                        >
-                            <Label
-                                id="_IDGenLabel14"
-                                design="Bold"
-                                text="Posting Date"
+                                text="Invoice Number"
                                 wrapping="true"
                             />
                         </Column>
@@ -60,9 +145,6 @@
                             id="_IDGenColumn2"
                             hAlign="Center"
                             width="7rem"
-                            minScreenWidth="700px"
-                            demandPopin="true"
-                            popinDisplay="Inline"
                         >
                             <Label
                                 id="_IDGenLabel2"
@@ -71,17 +153,32 @@
                             />
                         </Column>
                         <Column
-                            id="_IDGenColumn3"
+                            id="_IDGenColumn15"
                             hAlign="Center"
-                            width="6rem"
+                            width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
                         >
                             <Label
-                                id="_IDGenLabel3"
+                                id="_IDGenLabel18"
                                 design="Bold"
-                                text="Invoice Number"
+                                text="Uploaded By"
+                                wrapping="true"
+                            />
+                        </Column>
+                        <Column
+                            id="_IDGenColumn11"
+                            hAlign="Center"
+                            width="7rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel14"
+                                design="Bold"
+                                text="Posting Date"
                                 wrapping="true"
                             />
                         </Column>
@@ -96,7 +193,7 @@
                             <Label
                                 id="_IDGenLabel4"
                                 design="Bold"
-                                text="Invoice Amount"
+                                text="Total Invoice Amount"
                                 wrapping="true"
                             />
                         </Column>
@@ -118,7 +215,7 @@
                         <Column
                             id="_IDGenColumn6"
                             hAlign="Center"
-                            width="5rem"
+                            width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -126,14 +223,14 @@
                             <Label
                                 id="_IDGenLabel6"
                                 design="Bold"
-                                text="Cost Center"
+                                text="Invoice Type"
                                 wrapping="true"
                             />
                         </Column>
                         <Column
                             id="_IDGenColumn7"
                             hAlign="Center"
-                            width="10rem"
+                            width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -238,25 +335,25 @@
                             <cells>
                                 <ObjectIdentifier
                                     id="_IDGenObjectIdentifier1"
-                                    title="{ReferenceNo}"
-                                    titleActive="{parts: [{path: 'Status'},{path: 'createdBy'}],formatter:'formatter.refNoLink'}"
-                                    titlePress="onReferenceNoPress"
-                                />
-                                <Text
-                                    id="_IDGenText8"
-                                    text="{path:'PostingDate',formatter:'formatter.formatDate'}"
+                                    title="{InvoiceNumber}"
+                                    titleActive="{parts: [{path: 'Status'},{path: 'createdBy'}],formatter:'formatter.invNoLink'}"
+                                    titlePress="onInvNoPress"
                                 />
                                 <Text
                                     id="_IDGenText2"
                                     text="{path:'InvoiceDate',formatter:'formatter.formatDate'}"
                                 />
                                 <Text
-                                    id="_IDGenText3"
-                                    text="{InvoiceNumber}"
+                                    id="_IDGenText16"
+                                    text="{createdBy}"
+                                />
+                                <Text
+                                    id="_IDGenText8"
+                                    text="{path:'PostingDate',formatter:'formatter.formatDate'}"
                                 />
                                 <Text
                                     id="_IDGenText4"
-                                    text="{InvoiceAmount}"
+                                    text="{TotalInvoiceAmount}"
                                 />
                                 <Text
                                     id="_IDGenText5"
@@ -264,7 +361,7 @@
                                 />
                                 <Text
                                     id="_IDGenText6"
-                                    text="{CostCenter}"
+                                    text="{InvoiceType}"
                                 />
                                 <Text
                                     id="_IDGenText7"
@@ -278,12 +375,11 @@
                                     id="_IDGenObjectStatus1"
                                     text="{path:'Status',formatter:'formatter.formatStatus'}"
                                     state="{path:'Status',formatter:'formatter.statusState'}"
-                                    inverted="true"
                                 />
                                 <Select
                                     id="_IDGenSelect1"
                                     forceSelection="false"
-                                    enabled="{parts: [{path: 'Status'},{path: 'HodApprover'},{path: 'FinanceApprover'}],formatter:'formatter.checkApprovalAccess'}"
+                                    enabled="{parts: [{path: 'Status'},{path: 'HodApprover'}],formatter:'formatter.checkApprovalAccess'}"
                                     change="onActionChange"
                                 >
                                     <core:Item

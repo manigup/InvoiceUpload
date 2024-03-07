@@ -8,7 +8,7 @@
     contentWidth="350px"
     contentHeight="350px"
     afterClose="onDialogClose"
-    title="Edit Invoice - {EditModel>/ReferenceNo}"
+    title="Edit Invoice - {EditModel>/InvoiceNumber}"
     titleAlignment="Center"
 >
     <content>
@@ -43,12 +43,12 @@
                 id="_IDGenLabel3"
                 required="true"
                 design="Bold"
-                text="Invoice Amount"
+                text="Total Invoice Amount"
             />
             <Input
                 id="invAmmount"
                 type="Number"
-                value="{EditModel>/InvoiceAmount}"
+                value="{EditModel>/TotalInvoiceAmount}"
             />
             <Label
                 id="_IDGenLabel4"
@@ -65,12 +65,21 @@
                 id="_IDGenLabel5"
                 required="true"
                 design="Bold"
-                text="Cost Center"
+                text="Invoice Type"
             />
-            <Input
-                id="costCenter"
-                value="{EditModel>/CostCenter}"
-            />
+            <Select
+                id="invType"
+                selectedKey="{EditModel>/InvoiceType}"
+                forceSelection="false"
+                items="{/InvoiceType}"
+                change="onInvoiceTypeChange"
+            >
+                <core:Item
+                    id="_IDGenItem1"
+                    key="{Type}"
+                    text="{Type}"
+                />
+            </Select>
             <Label
                 id="_IDGenLabel6"
                 required="true"
@@ -82,18 +91,15 @@
                 id="reason"
                 value="{EditModel>/Reason}"
             />
-            <Label
+             <Label
                 id="_IDGenLabel8"
-                required="true"
                 design="Bold"
-                text="Select HOD"
+                text="Approver"
             />
             <Input
                 id="hod"
-                valueHelpOnly="true"
-                showValueHelp="true"
-                valueHelpRequest="onF4Help($event,'HOD')"
                 value="{EditModel>/HodApprover}"
+                enabled="false"
             />
             <Label
                 id="_IDGenLabel7"

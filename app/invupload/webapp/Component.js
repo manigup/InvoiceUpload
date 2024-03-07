@@ -37,11 +37,13 @@ sap.ui.define([
                             type: "GET",
                             success: res => {
                                 const attributes = res;
+                                sap.ui.getCore().loginEmail = attributes.email;
                                 this.setHeaders(attributes.login_name[0], attributes.type[0].substring(0, 1).toUpperCase());
                             }
                         });
                     } else {
-                        this.setHeaders("manishgupta8@kpmg.com", "E");
+                        sap.ui.getCore().loginEmail = "samarnahak@kpmg.com";
+                        this.setHeaders("1100123", "P");
                     }
                 }).catch(err =>
                     // metadata error

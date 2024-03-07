@@ -20,17 +20,41 @@ sap.ui.define([
                 this.getView().setModel(new JSONModel({}), "EditModel");
                 this.getView().setModel(new JSONModel({}), "DecisionModel");
                 this.getView().setModel(new JSONModel([]), "AttachmentModel");
+                this.getView().setModel(new JSONModel([]), "FinModel");
+                this.getView().setModel(new JSONModel({}), "Filter");
             },
 
             onAfterRendering: function () {
                 this.getData();
+
+                if (this.getView().getModel().getHeaders().loginType === "E") {
+                    this.getView().getModel().read("/Finance", {
+                        success: data => {
+                            this.getView().getModel("FinModel").setData(data.results);
+                            this.getView().getModel("FinModel").refresh(true);
+                        }
+                    });
+                }
             },
 
             getData: function () {
+                const filterData = this.getView().getModel("Filter").getData();
+                let oFilters = [];
+                Object.keys(filterData).forEach(key => {
+                    if (!jQuery.isEmptyObject(filterData[key])) {
+                        oFilters.push(new Filter(key, "EQ", filterData[key]));
+                    }
+                });
                 this.byId("uploadTbl").bindAggregation("items", {
                     path: "/Invoice",
+                    filters: oFilters,
                     template: this.tblTemp
                 });
+            },
+
+            onFilterClear: function () {
+                this.getView().getModel("Filter").setData({});
+                this.getView().getModel("Filter").refresh(true);
             },
 
             onAddPress: function () {
@@ -42,13 +66,14 @@ sap.ui.define([
                 createFrag.open();
             },
 
-            onReferenceNoPress: function (evt) {
+            onInvNoPress: function (evt) {
                 const obj = evt.getSource().getBindingContext().getObject();
                 const frag = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Edit", this);
                 this.getView().addDependent(frag);
                 this.getView().getModel("EditModel").setData(obj);
                 this.getView().getModel("EditModel").refresh(true);
-                this.refNo = obj.ReferenceNo;
+                this.invNo = obj.InvoiceNumber;
+                this.id = obj.Id;
                 this.getAttachments();
                 sap.ui.getCore().byId("attachment").setUploadUrl(this.getView().getModel().sServiceUrl + "/Attachments");
                 frag.open();
@@ -56,7 +81,7 @@ sap.ui.define([
 
             getAttachments: function () {
                 this.getView().getModel().read("/Attachments", {
-                    filters: [new Filter("ReferenceNo", "EQ", this.refNo)],
+                    filters: [new Filter("Id", "EQ", this.id)],
                     success: data => {
                         this.getView().getModel("AttachmentModel").setData(data.results);
                         this.getView().getModel("AttachmentModel").refresh(true);
@@ -68,15 +93,15 @@ sap.ui.define([
 
             onCreatePress: function (evt) {
                 this.dialogSource = evt.getSource();
-                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "costCenter", "reason", "hod"]) && sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
+                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "invType", "reason"]) && sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
                     BusyIndicator.show();
                     const payload = this.getView().getModel("DataModel").getData();
                     setTimeout(() => {
                         this.getView().getModel().create("/Invoice", payload, {
                             success: sData => {
                                 this.toAddress = sData.HodApprover;
-                                this.ccAddress = sData.createdBy;
-                                this.refNo = sData.ReferenceNo;
+                                this.invNo = sData.InvoiceNumber;
+                                this.id = sData.Id;
                                 this.doAttachment();
                             },
                             error: () => BusyIndicator.hide()
@@ -89,18 +114,18 @@ sap.ui.define([
 
             onEditPress: function (evt) {
                 this.dialogSource = evt.getSource();
-                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "costCenter", "reason", "hod"])) {
+                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "invType", "reason"])) {
                     BusyIndicator.show();
                     const payload = this.getView().getModel("EditModel").getData();
+                    payload.Status = "HAP";
                     setTimeout(() => {
-                        this.getView().getModel().update("/Invoice('" + this.refNo + "')", payload, {
+                        this.getView().getModel().update("/Invoice(InvoiceNumber='" + this.invNo + "',Id='" + this.id + "')", payload, {
                             success: sData => {
                                 BusyIndicator.hide();
-                                MessageBox.success("Invoice " + sData.ReferenceNo + " updated successfully", {
+                                MessageBox.success("Invoice " + sData.InvoiceNumber + " updated successfully", {
                                     onClose: () => {
                                         this.toAddress = payload.HodApprover;
-                                        this.ccAddress = payload.createdBy;
-                                        const content = "Invoice with refrence no. " + this.refNo + " updated by requestor.";
+                                        const content = "Invoice number " + this.invNo + " updated by supplier " + sap.ui.getCore().loginEmail.split("@")[0] + ".";
                                         this.sendEmailNotification(content);
                                         this.dialogSource.getParent().destroy();
                                         this.getData();
@@ -122,28 +147,24 @@ sap.ui.define([
                 MessageBox.confirm("Are you sure ?", {
                     onClose: (action) => {
                         if (action === "YES") {
-                            this.refNo = obj.ReferenceNo;
-                            this.getView().getModel("DecisionModel").setData({ Action: selectedAction });
+                            this.invNo = obj.InvoiceNumber;
+                            this.id = obj.Id;
                             this.payload = {};
+                            this.getView().getModel("DecisionModel").setData({ Action: selectedAction });
                             if (obj.Status === "HAP" && selectedAction === "A") {
                                 this.payload.Status = "ABH"; // Approved by HOD & Pending with Finance
-                                this.toAddress = obj.FinanceApprover;
-                                this.ccAddress = obj.createdBy;
                                 this.openHodFrag();
                             } else if (obj.Status === "HAP" && selectedAction === "R") {
                                 this.payload.Status = "RBH"; // Rejected by HOD
-                                this.toAddress = obj.createdBy;
-                                this.ccAddress = obj.HodApprover;
                                 this.openHodFrag();
                             } else if (obj.Status === "ABH" && selectedAction === "A") {
                                 this.payload.Status = "ABF"; // Approved by Finance
                                 this.openFinFrag();
                             } else {
                                 this.payload.Status = "RBF"; // Rejected by Finance
-                                this.toAddress = obj.createdBy;
-                                this.ccAddress = obj.FinanceApprover;
                                 this.openFinFrag();
                             }
+                            this.toAddress = obj.createdBy;
                         }
                     },
                     actions: ["YES", "NO"],
@@ -166,17 +187,10 @@ sap.ui.define([
 
             onHodSubmit: function (evt) {
                 this.dialogSource = evt.getSource();
-                const data = this.getView().getModel("DecisionModel").getData(),
-                    reqFields = data.Action === "A" && data.WithoutPO === true ? ["finance", "remarks"] : ["remarks"];
-                if (this.validateReqFields(reqFields)) {
+                const data = this.getView().getModel("DecisionModel").getData();
+                if (this.validateReqFields(["remarks"])) {
                     this.payload.HodRemarks = data.HodRemarks;
                     this.payload.FinanceApprover = data.FinanceApprover;
-                    this.payload.WithoutPO = data.WithoutPO;
-                    if (data.WithoutPO === false && data.Action === "A") {
-                        this.payload.Status = "APR";
-                    } else if (data.WithoutPO === false && data.Action === "R") {
-                        this.payload.Status = "REJ";
-                    }
                     this.takeAction();
                 } else {
                     MessageBox.error("Please fill all required inputs to proceed");
@@ -191,6 +205,7 @@ sap.ui.define([
                     this.payload.PostingDate = data.PostingDate;
                     this.payload.AccountingNumber = data.AccountingNumber;
                     this.payload.FinRemarks = data.FinRemarks;
+                    this.payload.FinanceApprover = this.getView().getModel().getHeaders().loginId;
                     this.takeAction();
                 } else {
                     MessageBox.error("Please fill all required inputs to proceed");
@@ -199,7 +214,7 @@ sap.ui.define([
 
             takeAction: function () {
                 setTimeout(() => {
-                    this.getView().getModel().update("/Invoice('" + this.refNo + "')", this.payload, {
+                    this.getView().getModel().update("/Invoice(Id='" + this.id + "',InvoiceNumber='" + this.invNo + "')", this.payload, {
                         success: () => {
                             BusyIndicator.hide();
                             MessageBox.success("Action taken successfully", {
@@ -212,8 +227,17 @@ sap.ui.define([
                                             content = " rejected by HOD.";
                                         case "RBF":
                                             content = " rejected by Finance.";
+                                        case "ABF":
+                                            content = " approved by Finance.";
                                     }
-                                    this.sendEmailNotification("Invoice with refrence no. " + this.refNo + content);
+                                    if (this.payload.Status === "ABH") {
+                                        this.getView().getModel("FinModel").getData().forEach(item => {
+                                            this.toAddress = item.FinEmail;
+                                            this.sendEmailNotification("Invoice number " + this.invNo + content);
+                                        });
+                                    } else {
+                                        this.sendEmailNotification("Invoice number " + this.invNo + content);
+                                    }
                                     this.dialogSource.getParent().destroy();
                                     this.getData();
                                 }
@@ -225,10 +249,11 @@ sap.ui.define([
             },
 
             validateReqFields: function (fields) {
-                let check = [], control;
+                let check = [], control, val;
                 fields.forEach(inp => {
                     control = sap.ui.getCore().byId(inp);
-                    if (control.getValue() === "") {
+                    val = control.getMetadata().getName() === 'sap.m.Select' ? control.getSelectedKey() : control.getValue();
+                    if (val === "") {
                         control.setValueState("Error").setValueStateText("Required");
                         check.push(false);
                     } else {
@@ -253,16 +278,16 @@ sap.ui.define([
             onBeforeUploadStarts: function (evt) {
                 evt.getParameter("item").addHeaderField(new sap.ui.core.Item({
                     key: "slug",
-                    text: this.refNo + "/" + evt.getParameter("item").getFileName()
+                    text: this.id + "/" + evt.getParameter("item").getFileName()
                 }));
             },
 
             onUploadComplete: function () {
                 if (sap.ui.getCore().byId("attachment").getIncompleteItems().length === 0) {
                     BusyIndicator.hide();
-                    MessageBox.success("Invoice uploaded successfully", {
+                    MessageBox.success("Invoice " + this.invNo + " uploaded successfully", {
                         onClose: () => {
-                            const content = "New invoice with refrence no. " + this.refNo + " uploaded by requestor.";
+                            const content = "New invoice " + this.invNo + " uploaded by supplier " + sap.ui.getCore().loginEmail.split("@")[0] + ".";
                             this.sendEmailNotification(content);
                             this.getView().getModel("DataModel").setData({});
                             this.dialogSource.getParent().destroy();
@@ -285,13 +310,13 @@ sap.ui.define([
             onAttachmentPress: function (evt) {
                 BusyIndicator.show();
                 const source = evt.getSource(),
-                    refNo = source.getBindingContext().getProperty("ReferenceNo");
+                    id = source.getBindingContext().getProperty("Id");
                 setTimeout(() => {
                     this.getView().getModel().read("/Attachments", {
-                        filters: [new Filter("ReferenceNo", "EQ", refNo)],
+                        filters: [new Filter("Id", "EQ", id)],
                         success: (data) => {
-                            data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(ReferenceNo='"
-                                + item.ReferenceNo + "',ObjectId='" + item.ObjectId + "')/$value");
+                            data.results.map(item => item.Url = this.getView().getModel().sServiceUrl + "/Attachments(Id='"
+                                + item.Id + "',ObjectId='" + item.ObjectId + "')/$value");
                             var popOver = sap.ui.xmlfragment("sap.fiori.invupload.fragment.Attachment", this);
                             sap.ui.getCore().byId("attachPopover").setModel(new JSONModel(data), "AttachModel");
                             this.getView().addDependent(popOver);
@@ -357,17 +382,23 @@ sap.ui.define([
                 evt.getSource().getParent().getParent().destroy();
             },
 
+            onInvoiceTypeChange: function (evt) {
+                const email = evt.getParameter("selectedItem").getBindingContext().getProperty("ApproverEmail");
+                this.getView().getModel("DataModel").getData().HodApprover = email;
+                this.getView().getModel("DataModel").refresh(true);
+            },
+
             sendEmailNotification: function (body) {
+                const link = window.location.origin +
+                    "/site/SP#invupload-manage?sap-ui-app-id-hint=saas_approuter_sap.fiori.invupload";
                 return new Promise((resolve, reject) => {
-                    const emailBody = `|| ${body} Kindly log-in with the link to take your action.<br><br><a href="https://impautosuppdev.launchpad.cfapps.ap10.hana.ondemand.com/site/SP#invupload-manage?sap-ui-app-id-hint=saas_approuter_sap.fiori.invupload">CLICK HERE</a>`,
+                    const emailBody = `|| ${body} Kindly log-in with the link to take your action.<br><br><a href='${link}'>CLICK HERE</a>`,
                         oModel = this.getView().getModel(),
                         mParameters = {
                             method: "GET",
                             urlParameters: {
-                                subject: "Invoice Submission",
                                 content: emailBody,
-                                toAddress: this.toAddress,
-                                ccAddress: this.ccAddress
+                                toAddress: this.toAddress
                             },
                             success: function (oData) {
                                 console.log("Email sent successfully.");

@@ -2,7 +2,7 @@ using db.invoiceupload as my from '../db/data-model';
 
 service CatalogService {
 
-    entity Invoice as
+    entity Invoice     as
         projection on my.UploadInvoice
         excluding {
             createdAt,
@@ -11,16 +11,16 @@ service CatalogService {
         };
 
     @readonly
-    entity Finance as projection on my.FinanceMaster;
+    entity Finance     as projection on my.FinanceMaster;
 
     @readonly
-    entity Hod     as projection on my.HodMaster;
+    entity InvoiceType as projection on my.InvoiceType;
 
 
     entity Attachments @(restrict: [{grant: [
         'READ',
         'WRITE',
-    ]}])           as
+    ]}])               as
         projection on my.Attachments
         excluding {
             createdAt,
@@ -29,5 +29,5 @@ service CatalogService {
             modifiedBy
         };
 
-    function sendEmail(subject : String, content : String, toAddress : String, ccAddress : String) returns String;
+    function sendEmail(content : String, toAddress : String) returns String;
 }

@@ -3,48 +3,47 @@ namespace db.invoiceupload;
 using managed from '@sap/cds/common';
 
 entity UploadInvoice : managed {
-  key ReferenceNo      : String;
-      InvoiceDate      : String(8);
-      InvoiceNumber    : String;
-      InvoiceAmount    : Integer;
-      CostCenter       : String;
-      Reason           : String;
-      PostingDate      : String(8);
-      AccountingNumber : String;
-      GST              : Integer;
-      WithoutPO        : Boolean;
-      HodApprover      : String @(restrict: [{
+  key Id                 : String(6);
+      InvoiceDate        : String(8);
+  key InvoiceNumber      : String;
+      TotalInvoiceAmount : Integer;
+      InvoiceType        : String;
+      Reason             : String;
+      PostingDate        : String(8) default '';
+      AccountingNumber   : String default '';
+      GST                : Integer;
+      HodApprover        : String @(restrict: [{
         grant: ['WRITE'],
         where: 'CreatedBy = $user'
       }]);
-      FinanceApprover  : String @(restrict: [{
-        grant: ['WRITE'],
-        where: 'HodApprover = $user'
-      }]);
-      HodRemarks       : String;
-      FinRemarks       : String;
-      Status           : String;
+      FinanceApprover    : String default '';
+      HodRemarks         : String default '';
+      FinRemarks         : String default '';
+      Status             : String;
 }
 
 entity Attachments : managed {
-  key ReferenceNo : String;
-  key ObjectId    : String;
+  key Id        : String(6);
+  key ObjectId  : String;
 
       @Core.MediaType: Mediatype
-      Data        : LargeBinary @Core.ContentDisposition.Filename: Filename;
+      Data      : LargeBinary @Core.ContentDisposition.Filename: Filename;
 
-      Mediatype   : String;
+      Mediatype : String;
 
       @Core.IsMediaType
-      Filename    : String;
+      Filename  : String;
 }
 
 entity FinanceMaster {
-  key Email : String;
-      Name  : String;
+  key Id       : Int16;
+      FinEmail : String;
+      FinName  : String;
 };
 
-entity HodMaster {
-  key Email : String;
-      Name  : String;
+entity InvoiceType {
+  key Id            : Int16;
+      Type          : String;
+      ApproverEmail : String;
+      ApproverName  : String;
 };

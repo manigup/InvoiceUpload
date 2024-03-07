@@ -14,44 +14,52 @@ module.exports = cds.service.impl(async function () {
 
     this.before('READ', 'Invoice', async (req) => {
 
-        const userID = req.user.id;
+        let userID = req.user.id;
+        if (userID === "anonymous") {
+            userID = "samarnahak@kpmg.com";
+        }
 
-        req.query.where(`createdBy = '${userID}' or HodApprover  = '${userID}' or FinanceApprover  = '${userID}' `);
+        const records = await cds.run(cds.parse.cql("Select * from db.invoiceupload.UploadInvoice")),
+            finRecord = await cds.run(cds.parse.cql("Select FinEmail from db.invoiceupload.FinanceMaster"));
 
+        if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1) {
+            req.query.where(`HodApprover = '${userID}' and Status = 'HAP'`);
+        } else if (records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
+            req.query.where(`Status = 'ABH'`);
+        } else {
+            req.query.where(`createdBy = '${userID}'`);
+        }
     });
 
     this.before('CREATE', 'Invoice', async (req) => {
 
-        const records = await cds.run(cds.parse.cql("Select InvoiceNumber,ReferenceNo from db.invoiceupload.UploadInvoice")),
+        if (req.user.id === "anonymous") {
+            req.user.id = "samarnahak@kpmg.com";
+        }
+
+        const records = await cds.run(cds.parse.cql("Select InvoiceNumber from db.invoiceupload.UploadInvoice")),
             duplicate = records.filter(item => item.InvoiceNumber === req.data.InvoiceNumber);
 
         if (duplicate.length > 0) {
             req.reject(400, 'Duplicate invoice number');
         }
 
-        if (records.length > 0) {
-            const ref = records[records.length - 1].ReferenceNo.split("INV"),
-                next = (parseInt(ref[1]) + 1).toString(),
-                no = next.length === 1 ? "0" + next : next;
-            req.data.ReferenceNo = "INV" + no;
-        } else {
-            req.data.ReferenceNo = "INV01";
-        }
+        // if (records.length > 0) {
+        //     const ref = records[records.length - 1].ReferenceNo.split("INV"),
+        //         next = (parseInt(ref[1]) + 1).toString(),
+        //         no = next.length === 1 ? "0" + next : next;
+        //     req.data.ReferenceNo = "INV" + no;
+        // } else {
+        //     req.data.ReferenceNo = "INV01";
+        // }
 
         req.data.Status = "HAP"; // hod approval pending
+        req.data.Id = Math.random().toString().substr(2, 6);
 
         const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
 
         // Creating dms folder
-        await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.InvoiceNumber);
-    });
-
-    this.before('UPDATE', 'Invoice', async (req) => {
-
-        if (req.data.Status === "RBH" || req.data.Status === "RBF") {
-            req.data.Status = "HAP"
-        }
-
+        await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.Id);
     });
 
     this.before("CREATE", 'Attachments', async (req) => {
@@ -62,19 +70,22 @@ module.exports = cds.service.impl(async function () {
 
         req.data.ObjectId = await _uploadAttachment(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, reqData[0], reqData[1]);
 
-        req.data.ReferenceNo = reqData[0];
+        if (req.user.id === "anonymous") {
+            req.user.id = "samarnahak@kpmg.com";
+        }
+        req.data.Id = reqData[0];
         req.data.Filename = reqData[1];
     });
 
     this.on('sendEmail', async (req) => {
-        const { subject, content, toAddress, ccAddress } = req.data;
+        const { content, toAddress } = req.data;
 
         const payload = {
-            Subject: subject,
+            Subject: "Invoice Submission Without PO/Schedule",
             Content: `Dear ${toAddress.split("@")[0]}, ${content} | | Regards | ImperialAuto`,
             Seperator: "|",
             ToAddress: toAddress,
-            CCAddress: ccAddress,
+            CCAddress: "",
             BCCAddress: "",
             CreatedBy: "Manikandan"
         };
