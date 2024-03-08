@@ -126,7 +126,8 @@
                     id="uploadTbl"
                     sticky="ColumnHeaders"
                     growing="true"
-                    growingThreshold="20"
+                    growingThreshold="40"
+                    alternateRowColors="true"
                 >
                     <columns>
                         <Column

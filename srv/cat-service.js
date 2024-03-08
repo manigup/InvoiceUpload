@@ -31,6 +31,13 @@ module.exports = cds.service.impl(async function () {
         }
     });
 
+    this.before('UPDATE', 'Invoice', async (req) => {
+
+        if( req.data.Status === "ABF"){
+            req.data.FinanceApprover = req.user.id;
+        }
+    });
+
     this.before('CREATE', 'Invoice', async (req) => {
 
         if (req.user.id === "anonymous") {

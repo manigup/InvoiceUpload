@@ -205,7 +205,6 @@ sap.ui.define([
                     this.payload.PostingDate = data.PostingDate;
                     this.payload.AccountingNumber = data.AccountingNumber;
                     this.payload.FinRemarks = data.FinRemarks;
-                    this.payload.FinanceApprover = this.getView().getModel().getHeaders().loginId;
                     this.takeAction();
                 } else {
                     MessageBox.error("Please fill all required inputs to proceed");
