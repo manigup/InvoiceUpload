@@ -22,18 +22,25 @@ module.exports = cds.service.impl(async function () {
         const records = await cds.run(cds.parse.cql("Select * from db.invoiceupload.UploadInvoice")),
             finRecord = await cds.run(cds.parse.cql("Select FinEmail from db.invoiceupload.FinanceMaster"));
 
-        if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1) {
+        if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1 &&
+            records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
+            // user is both HOD & Finance
+            req.query.where(`HodApprover = '${userID}' and (Status = 'HAP' or Status = 'ABH')`);
+        } else if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1) {
+            // user is HOD
             req.query.where(`HodApprover = '${userID}' and Status = 'HAP'`);
         } else if (records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
+            // user is finance
             req.query.where(`Status = 'ABH'`);
         } else {
+            // user is supplier
             req.query.where(`createdBy = '${userID}'`);
         }
     });
 
     this.before('UPDATE', 'Invoice', async (req) => {
 
-        if( req.data.Status === "ABF"){
+        if (req.data.Status === "ABF") {
             req.data.FinanceApprover = req.user.id;
         }
     });

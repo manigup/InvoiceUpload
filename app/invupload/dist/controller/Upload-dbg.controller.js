@@ -222,12 +222,16 @@ sap.ui.define([
                                     switch (this.payload.Status) {
                                         case "ABH":
                                             content = " approved by HOD.";
+                                            break;
                                         case "RBH":
                                             content = " rejected by HOD.";
+                                            break;
                                         case "RBF":
                                             content = " rejected by Finance.";
+                                            break;
                                         case "ABF":
                                             content = " approved by Finance.";
+                                            break;
                                     }
                                     if (this.payload.Status === "ABH") {
                                         this.getView().getModel("FinModel").getData().forEach(item => {
