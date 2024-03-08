@@ -6,7 +6,7 @@
     xmlns="sap.m"
     draggable="true"
     contentWidth="350px"
-    contentHeight="350px"
+    contentHeight="400px"
     afterClose="onDialogClose"
     title="Upload New Invoice"
     titleAlignment="Center"

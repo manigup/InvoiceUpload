@@ -2,14 +2,13 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/BusyIndicator",
-    "sap/m/StandardListItem",
     "sap/ui/model/Filter",
     "sap/m/MessageBox"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel, BusyIndicator, StandardListItem, Filter, MessageBox) {
+    function (Controller, JSONModel, BusyIndicator, Filter, MessageBox) {
         "use strict";
 
         return Controller.extend("sap.fiori.invupload.controller.Upload", {
@@ -329,48 +328,6 @@ sap.ui.define([
                         error: () => BusyIndicator.hide()
                     });
                 }, 1000);
-            },
-
-            onF4Help: function (evt, type) {
-                this.f4Source = evt.getSource();
-                switch (type) {
-                    case "HOD":
-                        this.oTemplate = new StandardListItem({ title: "{Email}", description: "{Name}" });
-                        this.openF4Help("Select HOD", "/Hod");
-                    case "FIN":
-                        this.oTemplate = new StandardListItem({ title: "{Email}", description: "{Name}" });
-                        this.openF4Help("Select Finance", "/Finance");
-                }
-            },
-
-            openF4Help: function (title, req) {
-                const f4 = sap.ui.xmlfragment("sap.fiori.invupload.fragment.F4Help", this);
-                this.getView().addDependent(f4);
-                f4.setTitle(title);
-                f4.bindAggregation("items", {
-                    path: req,
-                    template: this.oTemplate
-                });
-                f4.open();
-            },
-
-            onF4HelpSearch: function (evt) {
-                let oPath = evt.getSource().getBinding("items").getPath();
-                oPath = oPath.includes("?search") ? oPath.split("?search")[0] : oPath.split("&search")[0];
-                sap.ui.getCore().byId("F4Help").bindAggregation("items", {
-                    path: oPath,
-                    parameters: { custom: { search: evt.getParameter("value") } },
-                    template: this.oTemplate
-                });
-            },
-
-            onF4HelpConfirm: function (evt) {
-                this.f4Source.setValue(evt.getParameter("selectedItem").getTitle());
-                evt.getSource().destroy();
-            },
-
-            onF4HelpClose: function (evt) {
-                evt.getSource().destroy();
             },
 
             onDialogClose: function (evt) {
