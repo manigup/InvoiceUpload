@@ -32,9 +32,10 @@ module.exports = cds.service.impl(async function () {
         } else if (records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
             // user is finance
             req.query.where(`Status = 'ABH'`);
-        } else {
-            // user is supplier
+        } else if (req.headers.logintype === "P") {
             req.query.where(`createdBy = '${userID}'`);
+        } else {
+            req.reject(404, "No data available");
         }
     });
 

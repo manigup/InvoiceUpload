@@ -173,8 +173,6 @@ sap.ui.define([
             openHodFrag: function () {
                 const remarksFrag = sap.ui.xmlfragment("sap.fiori.invupload.fragment.HodRemarks", this);
                 this.getView().addDependent(remarksFrag);
-                this.getView().getModel("DecisionModel").getData().WithoutPO = true;
-                this.getView().getModel("DecisionModel").refresh(true);
                 remarksFrag.open();
             },
 
@@ -189,7 +187,6 @@ sap.ui.define([
                 const data = this.getView().getModel("DecisionModel").getData();
                 if (this.validateReqFields(["remarks"])) {
                     this.payload.HodRemarks = data.HodRemarks;
-                    this.payload.FinanceApprover = data.FinanceApprover;
                     this.takeAction();
                 } else {
                     MessageBox.error("Please fill all required inputs to proceed");
