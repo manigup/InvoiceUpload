@@ -71,7 +71,7 @@
                 selectedKey="{DataModel>/InvoiceType}"
                 forceSelection="false"
                 items="{/InvoiceType}"
-                change="onInvoiceTypeChange"
+                change="setHodApprover($event,'C')"
             >
                 <core:Item
                     id="_IDGenItem1"
@@ -90,7 +90,7 @@
                 selectedKey="{DataModel>/Department}"
                 visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
                 items="{/Department}"
-                change="onDepartmentChange"
+                change="setHodApprover($event,'C')"
             >
                 <core:Item
                     id="_IDGenItem2"

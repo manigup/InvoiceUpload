@@ -352,16 +352,15 @@ sap.ui.define([
                 evt.getSource().getParent().getParent().destroy();
             },
 
-            onInvoiceTypeChange: function (evt) {
-                const email = evt.getParameter("selectedItem").getBindingContext().getProperty("ApproverEmail");
-                this.getView().getModel("DataModel").getData().HodApprover = email;
-                this.getView().getModel("DataModel").refresh(true);
-            },
-
-            onDepartmentChange: function (evt) {
+            setHodApprover: function (evt, mode) {
                 const email = evt.getSource().getSelectedItem().getBindingContext().getProperty("ApproverEmail");
-                this.getView().getModel("DataModel").getData().HodApprover = email;
-                this.getView().getModel("DataModel").refresh(true);
+                if (mode === "C") {
+                    this.getView().getModel("DataModel").getData().HodApprover = email;
+                    this.getView().getModel("DataModel").refresh(true);
+                } else {
+                    this.getView().getModel("EditModel").getData().HodApprover = email;
+                    this.getView().getModel("EditModel").refresh(true);
+                }
             },
 
             onServiceGroupChange: function (evt) {
