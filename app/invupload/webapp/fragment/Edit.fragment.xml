@@ -81,6 +81,62 @@
                 />
             </Select>
             <Label
+                id="_IDGenLabel9"
+                required="true"
+                design="Bold"
+                text="Department"
+            />
+            <ComboBox
+                id="dept"
+                selectedKey="{EditModel>/Department}"
+                visible="{= ${EditModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                items="{/Department}"
+                change="onDepartmentChange"
+            >
+                <core:Item
+                    id="_IDGenItem2"
+                    key="{DeptName}"
+                    text="{DeptName}"
+                />
+            </ComboBox>
+            <Label
+                id="_IDGenLabel10"
+                required="true"
+                design="Bold"
+                text="Service Group"
+            />
+            <ComboBox
+                id="serviceGroup"
+                visible="{= ${EditModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                items="{/ServiceGroup}"
+                selectedKey="{EditModel>/ServiceGroup}"
+                change="onServiceGroupChange"
+            >
+                <core:Item
+                    id="_IDGenItem3"
+                    key="{GroupName}"
+                    text="{GroupName}"
+                />
+            </ComboBox>
+            <Label
+                id="_IDGenLabel11"
+                required="true"
+                design="Bold"
+                text="Service"
+            />
+            <ComboBox
+                id="service"
+                visible="{= ${EditModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                items="{ServiceModel>/}"
+                selectedKey="{EditModel>/Service}"
+            >
+                <core:Item
+                    id="_IDGenItem4"
+                    key="{ServiceModel>ServiceName}"
+                    text="{ServiceModel>ServiceName}"
+                />
+            </ComboBox>
+            <Label
                 id="_IDGenLabel6"
                 required="true"
                 design="Bold"
@@ -91,7 +147,7 @@
                 id="reason"
                 value="{EditModel>/Reason}"
             />
-             <Label
+            <Label
                 id="_IDGenLabel8"
                 design="Bold"
                 text="Approver"

@@ -8,6 +8,9 @@ entity UploadInvoice : managed {
   key InvoiceNumber      : String;
       TotalInvoiceAmount : Integer;
       InvoiceType        : String;
+      Department         : String;
+      ServiceGroup       : String;
+      Service            : String;
       Reason             : String;
       PostingDate        : String(8) default '';
       AccountingNumber   : String default '';
@@ -46,4 +49,24 @@ entity InvoiceType {
       Type          : String;
       ApproverEmail : String;
       ApproverName  : String;
+};
+
+entity Department {
+  key DeptId        : Int16;
+      DeptName      : String;
+      ApproverEmail : String;
+      ApproverName  : String;
+};
+
+entity ServiceGroup {
+  key GroupId   : Int16;
+      GroupName : String;
+      Service   : Composition of many Service
+                    on Service.GroupId = $self;
+};
+
+entity Service {
+  key ServiceId   : Int16;
+  key GroupId     : Association to ServiceGroup;
+      ServiceName : String;
 };

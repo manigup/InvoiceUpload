@@ -19,6 +19,7 @@ sap.ui.define([
                 this.getView().setModel(new JSONModel({}), "EditModel");
                 this.getView().setModel(new JSONModel({}), "DecisionModel");
                 this.getView().setModel(new JSONModel([]), "AttachmentModel");
+                this.getView().setModel(new JSONModel([]), "ServiceModel");
                 this.getView().setModel(new JSONModel([]), "FinModel");
                 this.getView().setModel(new JSONModel({}), "Filter");
             },
@@ -92,9 +93,15 @@ sap.ui.define([
 
             onCreatePress: function (evt) {
                 this.dialogSource = evt.getSource();
-                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "invType", "reason"]) && sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
+                const payload = this.getView().getModel("DataModel").getData();
+                let reqFields = ["invDate", "invNo", "invAmmount", "gst", "invType", "reason"];
+                if (payload.InvoiceType === "Domestic Service Procurement") {
+                    reqFields.push("dept");
+                    reqFields.push("serviceGroup");
+                    reqFields.push("service");
+                }
+                if (this.validateReqFields(reqFields) && sap.ui.getCore().byId("attachment").getIncompleteItems().length > 0) {
                     BusyIndicator.show();
-                    const payload = this.getView().getModel("DataModel").getData();
                     setTimeout(() => {
                         this.getView().getModel().create("/Invoice", payload, {
                             success: sData => {
@@ -113,9 +120,15 @@ sap.ui.define([
 
             onEditPress: function (evt) {
                 this.dialogSource = evt.getSource();
-                if (this.validateReqFields(["invDate", "invNo", "invAmmount", "gst", "invType", "reason"])) {
+                const payload = this.getView().getModel("EditModel").getData();
+                let reqFields = ["invDate", "invNo", "invAmmount", "gst", "invType", "reason"];
+                if (payload.InvoiceType === "Domestic Service Procurement") {
+                    reqFields.push("dept");
+                    reqFields.push("serviceGroup");
+                    reqFields.push("service");
+                }
+                if (this.validateReqFields(reqFields)) {
                     BusyIndicator.show();
-                    const payload = this.getView().getModel("EditModel").getData();
                     payload.Status = "HAP";
                     setTimeout(() => {
                         this.getView().getModel().update("/Invoice(InvoiceNumber='" + this.invNo + "',Id='" + this.id + "')", payload, {
@@ -343,6 +356,23 @@ sap.ui.define([
                 const email = evt.getParameter("selectedItem").getBindingContext().getProperty("ApproverEmail");
                 this.getView().getModel("DataModel").getData().HodApprover = email;
                 this.getView().getModel("DataModel").refresh(true);
+            },
+
+            onDepartmentChange: function (evt) {
+                const email = evt.getSource().getSelectedItem().getBindingContext().getProperty("ApproverEmail");
+                this.getView().getModel("DataModel").getData().HodApprover = email;
+                this.getView().getModel("DataModel").refresh(true);
+            },
+
+            onServiceGroupChange: function (evt) {
+                sap.ui.getCore().byId("service").setSelectedKey("");
+                const path = evt.getSource().getSelectedItem().getBindingContext().getPath();
+                this.getView().getModel().read(path + "/Service", {
+                    success: data => {
+                        this.getView().getModel("ServiceModel").setData(data.results);
+                        this.getView().getModel("ServiceModel").refresh(true);
+                    }
+                });
             },
 
             sendEmailNotification: function (body) {
