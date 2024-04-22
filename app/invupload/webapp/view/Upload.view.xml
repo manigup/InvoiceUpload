@@ -130,9 +130,23 @@
                     alternateRowColors="true"
                 >
                     <columns>
+                    <Column
+                            id="_IDGenColumn10"
+                            hAlign="Left"
+                            width="6rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel13"
+                                design="Bold"
+                                text="View Invoice"
+                            />
+                        </Column>
                         <Column
                             id="_IDGenColumn3"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="6rem"
                         >
                             <Label
@@ -144,7 +158,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn2"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                         >
                             <Label
@@ -155,7 +169,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn15"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -170,7 +184,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn11"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -185,7 +199,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn4"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -200,7 +214,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn5"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -215,7 +229,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn6"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -230,7 +244,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn110"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -245,7 +259,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn120"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -260,7 +274,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn130"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -275,7 +289,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn7"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -290,7 +304,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn13"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -305,7 +319,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn8"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="10rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -319,7 +333,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn9"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -333,7 +347,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn12"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -348,7 +362,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn14"
-                            hAlign="Center"
+                            hAlign="Left"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -361,24 +375,17 @@
                                 wrapping="true"
                             />
                         </Column>
-                        <Column
-                            id="_IDGenColumn10"
-                            hAlign="Center"
-                            width="6rem"
-                            minScreenWidth="700px"
-                            demandPopin="true"
-                            popinDisplay="Inline"
-                        >
-                            <Label
-                                id="_IDGenLabel13"
-                                design="Bold"
-                                text="Attachments"
-                            />
-                        </Column>
+                        
                     </columns>
                     <items>
                         <ColumnListItem id="uploadTblTemp">
                             <cells>
+                                <Link
+                                    id="_IDGenLink1"
+                                    emphasized="true"
+                                    text="View"
+                                    press="onAttachmentPress"
+                                />
                                 <ObjectIdentifier
                                     id="_IDGenObjectIdentifier1"
                                     title="{InvoiceNumber}"
@@ -459,12 +466,7 @@
                                     id="_IDGenText11"
                                     text="{FinRemarks}"
                                 />
-                                <Link
-                                    id="_IDGenLink1"
-                                    emphasized="true"
-                                    text="View"
-                                    press="onAttachmentPress"
-                                />
+                                
                             </cells>
                         </ColumnListItem>
                     </items>
