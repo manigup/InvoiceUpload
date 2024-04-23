@@ -19,9 +19,12 @@ entity UploadInvoice : managed {
         grant: ['WRITE'],
         where: 'CreatedBy = $user'
       }]);
+      HodApproverName    : String default '';
       FinanceApprover    : String default '';
+      FinApproverName    : String default '';
       HodRemarks         : String default '';
       FinRemarks         : String default '';
+      ApprovedAt         : DateTime;
       Status             : String;
 }
 

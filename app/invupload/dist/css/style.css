@@ -1,1 +1,9 @@
 /* Enter your custom styles here */
+
+.objBlue .sapMObjectIdentifierTitle .sapMText {
+    color: #0037d9 !important;
+}
+
+.status {
+    font-weight: 600 !important;
+}

@@ -9,6 +9,22 @@ formatter = {
             return "";
         }
     },
+    dateFormat: function (oDate) {
+        if (oDate) {
+            return sap.ui.core.format.DateFormat.getDateInstance({
+                pattern: "MMM dd, yyyy"
+            }).format(new Date(oDate));
+        } else {
+            return "";
+        }
+    },
+    formatTime: function (oDate) {
+        if (oDate) {
+            return oDate.toLocaleTimeString();
+        } else {
+            return "";
+        }
+    },
     formatStatus: function (status) {
         var text = "";
         if (status) {

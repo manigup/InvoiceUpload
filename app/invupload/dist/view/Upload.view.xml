@@ -131,8 +131,21 @@
                 >
                     <columns>
                         <Column
+                            id="_IDGenColumn10"
+                            width="5rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel13"
+                                design="Bold"
+                                text="View Invoice"
+                                wrapping="true"
+                            />
+                        </Column>
+                        <Column
                             id="_IDGenColumn3"
-                            hAlign="Center"
                             width="6rem"
                         >
                             <Label
@@ -144,7 +157,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn2"
-                            hAlign="Center"
                             width="7rem"
                         >
                             <Label
@@ -155,7 +167,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn15"
-                            hAlign="Center"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -170,7 +181,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn11"
-                            hAlign="Center"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -185,7 +195,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn4"
-                            hAlign="Center"
                             width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -200,7 +209,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn5"
-                            hAlign="Center"
                             width="6rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -215,7 +223,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn6"
-                            hAlign="Center"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -230,7 +237,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn110"
-                            hAlign="Center"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -245,7 +251,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn120"
-                            hAlign="Center"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -260,7 +265,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn130"
-                            hAlign="Center"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -275,7 +279,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn7"
-                            hAlign="Center"
                             width="8rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -290,7 +293,6 @@
                         </Column>
                         <Column
                             id="_IDGenColumn13"
-                            hAlign="Center"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -305,8 +307,7 @@
                         </Column>
                         <Column
                             id="_IDGenColumn8"
-                            hAlign="Center"
-                            width="10rem"
+                            width="11rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -315,12 +316,25 @@
                                 id="_IDGenLabel11"
                                 design="Bold"
                                 text="Status"
+                                wrapping="true"
                             />
                         </Column>
+                        <!-- <Column
+                            id="_IDGenColumn16"
+                            width="10rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel19"
+                                design="Bold"
+                                text="FI Approval Status"
+                            />
+                        </Column> -->
                         <Column
                             id="_IDGenColumn9"
-                            hAlign="Center"
-                            width="7rem"
+                            width="5rem"
                             minScreenWidth="700px"
                             demandPopin="true"
                             popinDisplay="Inline"
@@ -332,8 +346,35 @@
                             />
                         </Column>
                         <Column
+                            id="_IDGenColumn101"
+                            width="7rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel103"
+                                design="Bold"
+                                text="Approval Date &amp; Time"
+                                wrapping="true"
+                            />
+                        </Column>
+                        <Column
+                            id="_IDGenColumn111"
+                            width="7rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel119"
+                                design="Bold"
+                                text="HOD Approver"
+                                wrapping="true"
+                            />
+                        </Column>
+                        <Column
                             id="_IDGenColumn12"
-                            hAlign="Center"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -347,8 +388,21 @@
                             />
                         </Column>
                         <Column
+                            id="_IDGenColumn129"
+                            width="7rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel128"
+                                design="Bold"
+                                text="Finance Approver"
+                                wrapping="true"
+                            />
+                        </Column>
+                        <Column
                             id="_IDGenColumn14"
-                            hAlign="Center"
                             width="7rem"
                             minScreenWidth="700px"
                             demandPopin="true"
@@ -361,26 +415,19 @@
                                 wrapping="true"
                             />
                         </Column>
-                        <Column
-                            id="_IDGenColumn10"
-                            hAlign="Center"
-                            width="6rem"
-                            minScreenWidth="700px"
-                            demandPopin="true"
-                            popinDisplay="Inline"
-                        >
-                            <Label
-                                id="_IDGenLabel13"
-                                design="Bold"
-                                text="Attachments"
-                            />
-                        </Column>
                     </columns>
                     <items>
                         <ColumnListItem id="uploadTblTemp">
                             <cells>
+                                <Link
+                                    id="_IDGenLink1"
+                                    emphasized="true"
+                                    text="View"
+                                    press="onAttachmentPress"
+                                />
                                 <ObjectIdentifier
                                     id="_IDGenObjectIdentifier1"
+                                    class="objBlue"
                                     title="{InvoiceNumber}"
                                     titleActive="{parts: [{path: 'Status'},{path: 'createdBy'}],formatter:'formatter.invNoLink'}"
                                     titlePress="onInvNoPress"
@@ -433,8 +480,33 @@
                                     id="_IDGenObjectStatus1"
                                     text="{path:'Status',formatter:'formatter.formatStatus'}"
                                     state="{path:'Status',formatter:'formatter.statusState'}"
+                                    class="status"
                                 />
-                                <Select
+                                <!-- <ObjectStatus
+                                    id="_IDGenObjectStatus2"
+                                    text="{path:'Status',formatter:'formatter.formatStatus'}"
+                                    state="{path:'Status',formatter:'formatter.statusState'}"
+                                    visible="{= ${Status} === 'ABH' ||  ${Status} === 'ABF' ||  ${Status} === 'RBF'}"
+                                    class="status"
+                                /> -->
+                                <VBox
+                                    id="_IDGenVBox1"
+                                    visible="{parts: [{path: 'Status'},{path: 'HodApprover'}],formatter:'formatter.checkApprovalAccess'}"
+                                >
+                                    <Button
+                                        id="_IDGenButton2"
+                                        type="Accept"
+                                        text="Accept"
+                                        press="onAction($event,'A')"
+                                    />
+                                    <Button
+                                        id="_IDGenButton3"
+                                        type="Reject"
+                                        text="Reject"
+                                        press="onAction($event,'R')"
+                                    />
+                                </VBox>
+                                <!-- <Select
                                     id="_IDGenSelect1"
                                     forceSelection="false"
                                     enabled="{parts: [{path: 'Status'},{path: 'HodApprover'}],formatter:'formatter.checkApprovalAccess'}"
@@ -450,20 +522,26 @@
                                         key="R"
                                         text="Reject"
                                     />
-                                </Select>
+                                </Select> -->
+                                <Text
+                                    id="_IDGenText102"
+                                    text="{path:'ApprovedAt',formatter:'formatter.dateFormat'} {path:'ApprovedAt',formatter:'formatter.formatTime'}"
+                                />
+                                <Text
+                                    id="_IDGenText109"
+                                    text="{HodApproverName}"
+                                />
                                 <Text
                                     id="_IDGenText9"
                                     text="{HodRemarks}"
                                 />
                                 <Text
+                                    id="_IDGenText108"
+                                    text="{FinApproverName}"
+                                />
+                                <Text
                                     id="_IDGenText11"
                                     text="{FinRemarks}"
-                                />
-                                <Link
-                                    id="_IDGenLink1"
-                                    emphasized="true"
-                                    text="View"
-                                    press="onAttachmentPress"
                                 />
                             </cells>
                         </ColumnListItem>

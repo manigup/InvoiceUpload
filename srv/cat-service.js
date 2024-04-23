@@ -43,6 +43,10 @@ module.exports = cds.service.impl(async function () {
 
         if (req.data.Status === "ABF") {
             req.data.FinanceApprover = req.user.id;
+            // req.data.FinApproverName = JSON.stringify(req.user.attr.firstname);
+        }
+        if (req.data.Status !== "HAP") {
+            req.data.ApprovedAt = new Date();
         }
     });
 

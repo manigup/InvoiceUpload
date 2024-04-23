@@ -152,35 +152,35 @@ sap.ui.define([
                 }
             },
 
-            onActionChange: function (evt) {
+            onAction: function (evt, selectedAction) {
                 const source = evt.getSource(),
-                    obj = source.getBindingContext().getObject(),
-                    selectedAction = source.getSelectedKey();
-                MessageBox.confirm("Are you sure ?", {
-                    onClose: (action) => {
-                        if (action === "YES") {
-                            this.invNo = obj.InvoiceNumber;
-                            this.id = obj.Id;
-                            this.payload = {};
-                            this.getView().getModel("DecisionModel").setData({ Action: selectedAction });
-                            if (obj.Status === "HAP" && selectedAction === "A") {
-                                this.payload.Status = "ABH"; // Approved by HOD & Pending with Finance
-                                this.openHodFrag();
-                            } else if (obj.Status === "HAP" && selectedAction === "R") {
-                                this.payload.Status = "RBH"; // Rejected by HOD
-                                this.openHodFrag();
-                            } else if (obj.Status === "ABH" && selectedAction === "A") {
-                                this.payload.Status = "ABF"; // Approved by Finance
-                                this.openFinFrag();
-                            } else {
-                                this.payload.Status = "RBF"; // Rejected by Finance
-                                this.openFinFrag();
-                            }
-                            this.toAddress = obj.createdBy;
-                        }
-                    },
-                    actions: ["YES", "NO"],
-                });
+                    obj = source.getBindingContext().getObject();
+                // selectedAction = source.getSelectedKey();
+                // MessageBox.confirm("Are you sure ?", {
+                //     onClose: (action) => {
+                //         if (action === "YES") {
+                this.invNo = obj.InvoiceNumber;
+                this.id = obj.Id;
+                this.payload = {};
+                this.getView().getModel("DecisionModel").setData({ Action: selectedAction });
+                if (obj.Status === "HAP" && selectedAction === "A") {
+                    this.payload.Status = "ABH"; // Approved by HOD & Pending with Finance
+                    this.openHodFrag();
+                } else if (obj.Status === "HAP" && selectedAction === "R") {
+                    this.payload.Status = "RBH"; // Rejected by HOD
+                    this.openHodFrag();
+                } else if (obj.Status === "ABH" && selectedAction === "A") {
+                    this.payload.Status = "ABF"; // Approved by Finance
+                    this.openFinFrag();
+                } else {
+                    this.payload.Status = "RBF"; // Rejected by Finance
+                    this.openFinFrag();
+                }
+                this.toAddress = obj.createdBy;
+                //         }
+                //     },
+                //     actions: ["YES", "NO"],
+                // });
             },
 
             openHodFrag: function () {
@@ -214,6 +214,7 @@ sap.ui.define([
                     this.payload.PostingDate = data.PostingDate;
                     this.payload.AccountingNumber = data.AccountingNumber;
                     this.payload.FinRemarks = data.FinRemarks;
+                    this.payload.FinApproverName = sap.ui.getCore().userName;
                     this.takeAction();
                 } else {
                     MessageBox.error("Please fill all required inputs to proceed");
@@ -353,12 +354,14 @@ sap.ui.define([
             },
 
             setHodApprover: function (evt, mode) {
-                const email = evt.getSource().getSelectedItem().getBindingContext().getProperty("ApproverEmail");
+                const context = evt.getSource().getSelectedItem().getBindingContext();
                 if (mode === "C") {
-                    this.getView().getModel("DataModel").getData().HodApprover = email;
+                    this.getView().getModel("DataModel").getData().HodApprover = context.getProperty("ApproverEmail");
+                    this.getView().getModel("DataModel").getData().HodApproverName = context.getProperty("ApproverName");
                     this.getView().getModel("DataModel").refresh(true);
                 } else {
-                    this.getView().getModel("EditModel").getData().HodApprover = email;
+                    this.getView().getModel("EditModel").getData().HodApprover = context.getProperty("ApproverEmail");
+                    this.getView().getModel("DataModel").getData().HodApproverName = context.getProperty("ApproverName");
                     this.getView().getModel("EditModel").refresh(true);
                 }
             },
