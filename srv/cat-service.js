@@ -13,8 +13,8 @@ const sdmCredentials = {
 module.exports = cds.service.impl(async function () {
 
     this.before('READ', 'Invoice', async (req) => {
-
         let userID = req.user.id;
+
         if (userID === "anonymous") {
             userID = "samarnahak@kpmg.com";
         }
@@ -106,16 +106,24 @@ module.exports = cds.service.impl(async function () {
             ToAddress: toAddress,
             CCAddress: "",
             BCCAddress: "",
-            CreatedBy: "Manikandan"
+            CreatedBy: req.headers.loginid
         };
         try {
-            await axios.post('https://imperialauto.co:84/IAIAPI.asmx/SendMail', payload, {
-                headers: {
-                    'Authorization': 'Bearer IncMpsaotdlKHYyyfGiVDg==',
-                    'Content-Type': 'application/json'
-                }
-            });
-            return `Email sent successfully.`;
+            const token = await generateToken(req.headers.loginid),
+                legApi = await cds.connect.to('Legacy'),
+                response = await legApi.send({
+                    query: `POST SendMail`,
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    data: payload
+                });
+            if (response.ErrorCode) {
+                return "Error sending email";
+            } else {
+                return "Email sent successfully";
+            }
         } catch (error) {
             console.error('Error:', error);
         }
@@ -201,5 +209,30 @@ const _uploadAttachment = async function (sdmUrl, jwtToken, repositoryId, folder
                 reject(error)
             })
     })
+}
+
+async function generateToken(username) {
+    try {
+        const legApi = await cds.connect.to('Legacy'),
+            response = await legApi.send({
+                query: `POST GenerateToken`,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    "InputKey": username
+                }
+            });
+
+        if (response.d) {
+            return response.d;
+        } else {
+            console.error('Error parsing token response:', response.data);
+            throw new Error('Error parsing the token response from the API.');
+        }
+    } catch (error) {
+        console.error('Error generating token:', error);
+        throw new Error('Unable to generate token.');
+    }
 }
 

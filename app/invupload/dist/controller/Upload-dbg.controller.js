@@ -137,7 +137,7 @@ sap.ui.define([
                                 MessageBox.success("Invoice " + sData.InvoiceNumber + " updated successfully", {
                                     onClose: () => {
                                         this.toAddress = payload.HodApprover;
-                                        const content = "Invoice number " + this.invNo + " updated by supplier " + sap.ui.getCore().loginEmail.split("@")[0] + ".";
+                                        const content = "Invoice number " + this.invNo + " updated by supplier " + sap.ui.getCore().userName + ".";
                                         this.sendEmailNotification(content);
                                         this.dialogSource.getParent().destroy();
                                         this.getData();
@@ -231,22 +231,22 @@ sap.ui.define([
                                     let content;
                                     switch (this.payload.Status) {
                                         case "ABH":
-                                            content = " approved by HOD.";
+                                            content = " approved by HOD";
                                             break;
                                         case "RBH":
-                                            content = " rejected by HOD.";
+                                            content = " rejected by HOD";
                                             break;
                                         case "RBF":
-                                            content = " rejected by Finance.";
+                                            content = " rejected by Finance";
                                             break;
                                         case "ABF":
-                                            content = " approved by Finance.";
+                                            content = " approved by Finance";
                                             break;
                                     }
                                     if (this.payload.Status === "ABH") {
                                         this.getView().getModel("FinModel").getData().forEach(item => {
                                             this.toAddress = item.FinEmail;
-                                            this.sendEmailNotification("Invoice number " + this.invNo + content);
+                                            this.sendEmailNotification("Invoice number " + this.invNo + content + sap.ui.getCore().userName + ".");
                                         });
                                     } else {
                                         this.sendEmailNotification("Invoice number " + this.invNo + content);
@@ -300,7 +300,7 @@ sap.ui.define([
                     BusyIndicator.hide();
                     MessageBox.success("Invoice " + this.invNo + " uploaded successfully", {
                         onClose: () => {
-                            const content = "New invoice " + this.invNo + " uploaded by supplier " + sap.ui.getCore().loginEmail.split("@")[0] + ".";
+                            const content = "New invoice " + this.invNo + " uploaded by supplier " + sap.ui.getCore().userName + ".";
                             this.sendEmailNotification(content);
                             this.getView().getModel("DataModel").setData({});
                             this.dialogSource.getParent().destroy();
