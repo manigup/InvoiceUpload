@@ -2,13 +2,18 @@ const cds = require('@sap/cds');
 const axios = require('axios').default;
 const FormData = require('form-data');
 
-const sdmCredentials = {
+const ecmserviceurl = "https://api-sdm-di.cfapps.ap10.hana.ondemand.com/";
+const devSdm = {
     "clientid": "sb-af5ed0ac-6872-41a0-956e-ec2fea18c139!b26649|sdm-di-DocumentManagement-sdm_integration!b247",
     "clientsecret": "vORif9806WxSm8azpmw6Fuj99Ro=",
     "url": "https://impautosuppdev.authentication.ap10.hana.ondemand.com",
-    "ecmserviceurl": "https://api-sdm-di.cfapps.ap10.hana.ondemand.com/",
     "repositoryId": "Inv_Submission"
-}
+}, prdSdm = {
+    "clientid": "sb-75d68fc2-fdc0-4ee1-ac19-572a35f46864!b36774|sdm-di-DocumentManagement-sdm_integration!b247",
+    "clientsecret": "5LcakzQRIAEeMZpjCSUPd6NhKRE=",
+    "url": "https://supplier-portal.authentication.ap10.hana.ondemand.com",
+    "repositoryId": "ZDMS_SUPP"
+};
 
 module.exports = cds.service.impl(async function () {
 
@@ -75,19 +80,38 @@ module.exports = cds.service.impl(async function () {
         req.data.Status = "HAP"; // hod approval pending
         req.data.Id = Math.random().toString().substr(2, 6);
 
-        const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
+        let connJwtToken;
+        if (req.headers.origin.includes("port") || req.headers.origin.includes("impautosuppdev")) {
+            connJwtToken = await _fetchJwtToken(devSdm.url, devSdm.clientid, devSdm.clientsecret);
 
-        // Creating dms folder
-        await _createFolder(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, req.data.Id);
+            // Creating dms folder
+            await _createFolder(ecmserviceurl, connJwtToken, devSdm.repositoryId, req.data.Id);
+        } else {
+
+            connJwtToken = await _fetchJwtToken(prdSdm.url, prdSdm.clientid, prdSdm.clientsecret);
+
+            // Creating dms folder
+            await _createFolder(ecmserviceurl, connJwtToken, prdSdm.repositoryId, req.data.Id);
+        }
     });
 
     this.before("CREATE", 'Attachments', async (req) => {
 
         const reqData = req.data.Filename.split("/");
 
-        const connJwtToken = await _fetchJwtToken(sdmCredentials.url, sdmCredentials.clientid, sdmCredentials.clientsecret);
+        let connJwtToken;
+        if (req.headers.origin.includes("port") || req.headers.origin.includes("impautosuppdev")) {
+            
+            connJwtToken = await _fetchJwtToken(devSdm.url, devSdm.clientid, devSdm.clientsecret);
 
-        req.data.ObjectId = await _uploadAttachment(sdmCredentials.ecmserviceurl, connJwtToken, sdmCredentials.repositoryId, reqData[0], reqData[1]);
+            req.data.ObjectId = await _uploadAttachment(ecmserviceurl, connJwtToken, devSdm.repositoryId, reqData[0], reqData[1]);
+
+        } else {
+
+            connJwtToken = await _fetchJwtToken(prdSdm.url, prdSdm.clientid, prdSdm.clientsecret);
+
+            req.data.ObjectId = await _uploadAttachment(ecmserviceurl, connJwtToken, prdSdm.repositoryId, reqData[0], reqData[1]);
+        }
 
         if (req.user.id === "anonymous") {
             req.user.id = "samarnahak@kpmg.com";
