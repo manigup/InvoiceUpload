@@ -27,6 +27,9 @@ sap.ui.define([
             onAfterRendering: function () {
                 this.getData();
 
+                const cData = JSON.parse(sessionStorage.getItem("CodeDetails")) || [{ "code": "P39" }];
+                this.getView().setModel(new JSONModel(cData), "CodeDetails");
+
                 if (this.getView().getModel().getHeaders().loginType === "E") {
                     this.getView().getModel().read("/Finance", {
                         success: data => {
@@ -94,7 +97,7 @@ sap.ui.define([
             onCreatePress: function (evt) {
                 this.dialogSource = evt.getSource();
                 const payload = this.getView().getModel("DataModel").getData();
-                let reqFields = ["invDate", "invNo", "invAmmount", "gst", "invType", "reason"];
+                let reqFields = ["invDate", "invNo", "invAmmount", "gst", "pCode", "invType", "reason"];
                 if (payload.InvoiceType === "Domestic Service Procurement") {
                     reqFields.push("dept");
                     reqFields.push("serviceGroup");
@@ -121,7 +124,7 @@ sap.ui.define([
             onEditPress: function (evt) {
                 this.dialogSource = evt.getSource();
                 const payload = this.getView().getModel("EditModel").getData();
-                let reqFields = ["invDate", "invNo", "invAmmount", "gst", "invType", "reason"];
+                let reqFields = ["invDate", "invNo", "invAmmount", "gst", "pCode", "invType", "reason"];
                 if (payload.InvoiceType === "Domestic Service Procurement") {
                     reqFields.push("dept");
                     reqFields.push("serviceGroup");

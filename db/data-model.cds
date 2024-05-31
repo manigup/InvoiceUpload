@@ -15,6 +15,7 @@ entity UploadInvoice : managed {
       PostingDate        : String(8) default '';
       AccountingNumber   : String default '';
       GST                : Integer;
+      PlantCode          : String(3);
       HodApprover        : String @(restrict: [{
         grant: ['WRITE'],
         where: 'CreatedBy = $user'

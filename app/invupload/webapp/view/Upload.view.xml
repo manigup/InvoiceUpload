@@ -222,6 +222,20 @@
                             />
                         </Column>
                         <Column
+                            id="_IDGenColumn118"
+                            width="5rem"
+                            minScreenWidth="700px"
+                            demandPopin="true"
+                            popinDisplay="Inline"
+                        >
+                            <Label
+                                id="_IDGenLabel129"
+                                design="Bold"
+                                text="Plant Code"
+                                wrapping="true"
+                            />
+                        </Column>
+                        <Column
                             id="_IDGenColumn6"
                             width="8rem"
                             minScreenWidth="700px"
@@ -451,6 +465,10 @@
                                 <Text
                                     id="_IDGenText5"
                                     text="{GST}"
+                                />
+                                <Text
+                                    id="_IDGenText51"
+                                    text="{PlantCode}"
                                 />
                                 <Text
                                     id="_IDGenText6"

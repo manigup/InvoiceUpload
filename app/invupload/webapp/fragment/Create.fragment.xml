@@ -61,6 +61,24 @@
                 value="{DataModel>/GST}"
             />
             <Label
+                id="_IDGenLabel110"
+                required="true"
+                design="Bold"
+                text="Plant Code"
+            />
+            <Select
+                id="pCode"
+                forceSelection="false"
+                selectedKey="{DataModel>/PlantCode}"
+                items="{CodeDetails>/}"
+            >
+                <core:Item
+                    id="_IDGenItem5"
+                    key="{CodeDetails>code}"
+                    text="{CodeDetails>code}"
+                />
+            </Select>
+            <Label
                 id="_IDGenLabel5"
                 required="true"
                 design="Bold"

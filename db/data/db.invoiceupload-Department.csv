@@ -1,11 +1,11 @@
 DeptId;DeptName;ApproverEmail;ApproverName
-1;ADMIN SERVICE;sudhir@impauto.com;Sudhir
-2;CORPORATE SERVICE;sudhir@impauto.com;Sudhir
+1;ADMIN SERVICE;sudhir@impauto.com;Sudhir Ranka
+2;CORPORATE SERVICE;sudhir@impauto.com;Sudhir Ranka
 3;ENGINEERING SERVICE;rajeshsehgal@impauto.com;Rajesh Sehgal
 4;FINANCIAL SERVICE;rajeshsehgal@impauto.com;Rajesh Sehgal
-5;HR SERVICE;sudhir@impauto.com;Sudhir
-6;IT SERVICE;manishgupta8@kpmg.com;Manish Gupta
-7;MAINTANENCE SERVICE;sudhir@impauto.com;Sudhir
+5;HR SERVICE;sudhir@impauto.com;Sudhir Ranka
+6;IT SERVICE;rajeshsehgal@impauto.com;Rajesh Sehgal
+7;MAINTANENCE SERVICE;sudhir@impauto.com;Sudhir Ranka
 8;MANUFACTURING SERVICE;rajeshsehgal@impauto.com;Rajesh Sehgal
-9;MARKETING SERVICE;sudhir@impauto.com;Sudhir
+9;MARKETING SERVICE;sudhir@impauto.com;Sudhir Ranka
 10;SELLING & DISTRIBUTION SERVICE;rajeshsehgal@impauto.com;Rajesh Sehgal
