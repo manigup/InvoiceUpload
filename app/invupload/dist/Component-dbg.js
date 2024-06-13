@@ -37,13 +37,25 @@ sap.ui.define([
                             type: "GET",
                             success: res => {
                                 const attributes = res;
-                                // sap.ui.getCore().loginEmail = attributes.email;
+                                sap.ui.getCore().loginEmail = attributes.email;
                                 sap.ui.getCore().userName = attributes.firstname + " " + attributes.lastname;
                                 this.setHeaders(attributes.login_name[0], attributes.type[0].substring(0, 1).toUpperCase());
                             }
                         });
                     } else {
-                        // sap.ui.getCore().loginEmail = "samarnahak@kpmg.com";
+                        // sap.ui.getCore().loginEmail = "rajeshsehgal@impauto.com";
+                        // sap.ui.getCore().userName = "Rajesh" + " " + "Sehgal";
+                        // this.setHeaders(sap.ui.getCore().loginEmail, "E");
+
+                        // sap.ui.getCore().loginEmail = "sudhir@impauto.com";
+                        // sap.ui.getCore().userName = "Sudhir" + " " + "Ranka";
+                        // this.setHeaders(sap.ui.getCore().loginEmail, "E");
+
+                        // sap.ui.getCore().loginEmail = "manishgupta8@kpmg.com";
+                        // sap.ui.getCore().userName = "Manish" + " " + "Gupta";
+                        // this.setHeaders(sap.ui.getCore().loginEmail, "E");
+
+                        sap.ui.getCore().loginEmail = "samarnahak@kpmg.com";
                         sap.ui.getCore().userName = "Samar" + " " + "Nahak";
                         this.setHeaders("1100123", "P");
                     }

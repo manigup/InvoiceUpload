@@ -1,223 +1,232 @@
-ServiceId;GroupId_GroupId;ServiceName
-1;1;AMC-STAMPING OF WEIGHING SYSTEM
-2;1;AMC-FIRE EXTINGUISHER
-3;1;AMC-RODENT CONTROL
-4;1;AMC-RO PLANT
-5;1;REPAIR-FIRE EXTINGUISHER
-6;1;REPAIR-FURNITURE
-7;1;REPAIR-READER SAVIOR
-8;1;VEHICLE REPAIR & SERVICE
-9;1;AMC-UPS & BATTERY CHARGER
-10;1;AMC-CISCO DEVICES
-11;1;AMC-COMPREHENSIVE SUPPORT
-12;1;AMC-PRINTER
-13;1;AMC-SAVIOR HARDWARE
-14;1;AMC-SAVIOR SOFTWARE
-15;1;AMC-S/4 HANA LICENSE SUBSCRIPTION
-16;1;AMC-SOFTWARE SUPPORT
-17;1;REPAIR-PRINTER/DESKTOP/LAPTOP
-18;1;EXCAVATING & EARTHMOVING 
-19;1;MASONRY SERVICES
-20;1;AC INSTALL/DISMANTLE/SERVICE & MAINT
-21;1;RESHARPEN OF SAW/BLADE
-22;1;AMC-FORKLIFT
-23;1;AMC-LAB EQUIPMENT
-24;1;AMC-LASER MARKING MACHINE
-25;1;AMC-MARKING MACHINE
-26;1;AMC- CHILLER
-27;1;AMC-AIR COMPRESSOR
-28;1;AMC-DG/GG SET
-29;1;AMC-LIFTING EQUIPMENTS
-30;1;AMC-PLANT & MACHINERIES
-31;1;AMC-POWER DISTRIBUTION SYSTEM
-32;1;AMC-EXTENDED WARRANTY
-33;1;AMC-SOLAR COMPREHENSIVE O&M
-34;2;AUDIT-ENERGY ASSESSMENT (ENERGY + WATER)
-35;2;AUDIT-SAFETY SERVICE
-36;2;AUDIT-COST AUDIT
-37;2;AUDIT-TAX AUDIT
-38;2;AUDIT-INTERNAL AUDIT
-39;2;AUDIT-STATUTORY AUDIT
-40;3;BOARDING & LODGING/HOTEL STAY
-41;3;PICK & DROP TRANSPORT SERVICE-EMPLOYEES 
-42;3;TAXI SERVICE
-43;3;AIR TRAVEL
-44;3;LODGING & FOOD SERVICE
-45;4;BENDING & FIXING OF TMT BAR
-46;4;CIVIL INTERIOR WORK
-47;4;CIVIL TESTING SERVICE
-48;4;DISMANTLING-BRICK WORK
-49;4;DISMANTLING-RCC
-50;4;EXCAVATION OF SOIL
-51;4;FIXING OF ACC SHEET
-52;4;FLOORING WORK
-53;4;WATER PROOFING WORK
-54;4;RAIN WATER HARVESTING SYSTEM
-55;4;SUPPLY & FIXING-CERAMIC TILES
-56;4;SUPPLY & LAYING-KOTA STONE 
-57;4;SUPPLY & LAYING-RCC
-58;4;SUPPLY & LAYING-BRICK WORK
-59;4;SUPPLY & LAYING-CEMENT SAND PLASTER
-60;4;SUPPLY & LAYING-CONCRETE STONE WALL
-61;4;MIXING & LAYING GROUTING POWDER
-62;4;PROVIDING & FIXING-SHUTTERING
-63;4;DISMANTLING-OFFICE/PUFF PANEL
-64;4;FABRICATION OF GATE/WINDOW/SHUTTER
-65;4;FABRICATION OF OFFICE/PUFF PANEL
-66;4;FALL CEILING JOB WORK
-67;4;INSTALLATION-OFFICE/PUFF PANEL
-68;4;INSTALLATION-EXHAUST FAN
-69;4;INSTALLATION-GATE/WINDOW/SHUTTER
-70;4;PAINTING-WEATHER PROOF APPLICATION
-71;4;PAINTING-ANTI FUNGAL APPLICATION
-72;4;PAINTING-EPOXY APPLICATION
-73;4;PAINTING-PRIMER APPLICATION
-74;4;PAINTING-WALL PUTTY APPLICATION
-75;4;PAINTING-WHITE WASH APPLICATION 
-76;4;PLUMBING SERVICE
-77;4;EARTH/ASH WORK IN BACK FILLING 
-78;4;DISMANTLING -PIPE FITTING & ACCESSORIES
-79;5;CONSULTANCY-ARCHITECTURAL
-80;5;CONSULTANCY-PROPERTY BROKERAGE
-81;5;CONSULTANCY-CIVIL SERVICE
-82;5;CONSULTANCY-FIRE NOC
-83;5;CONSULTANCY-LICENCING SERVICE
-84;5;CONSULTANCY-SURVEY SERVICE
-85;5;CONSULTANCY-PROJECT MGMT. & EXECUTION
-86;5;CONSULTANCY-TRADE MARK FEES
-87;5;CONSULTANCY-MANAGEMENT
-88;5;CONSULTANCY-CONTINUING ASSMENT IATF
-89;5;CONSULTANCY-DESIGN/DRAWING
-90;5;CONSULTANCY-ENGINEERING ADVISORY
-91;5;CONSULTANCY-THIRD PARTY INSPECTION
-92;5;CONSULTANCY-LEGAL
-93;5;CONSULTANCY-ACCOUNT/TAX 
-94;5;CONSULTANCY-GST 
-95;5;CONSULTANCY-RATING
-96;5;CONSULTANCY-EXIM
-97;5;CONSULTANCY-IPO/INVESTOR RELATION
-98;5;COMPLIANCE-HR
-99;5;CONSULTANCY-AUDIOVISUAL &RELATED SERVICE
-100;5;CONSULTANCY-RESEARCH/PUBLIC OPINION POLL
-101;5;CONSULTANCY-ACTUARIAL
-102;5;CONSULTANCY-ESI
-103;5;CONSULTANCY-ESG REPORTING
-104;5;CONSULTANCY-ENVIRONMENTAL
-105;5;CONSULTANCY-FACTORY LAYOUT
-106;5;CONSULTANCY-HR TRAINING
-107;5;CONSULTANCY-RETAINERSHIP
-108;5;PLACEMENT SERVICE
-109;5;CONSULTANCY-OPERATIONS
-110;7;WASTE COLLECTION
-111;7;FIRE ALARM SYSTEM SERVICE
-112;7;GARDENING EXPENSES
-113;7;MEDICAL SERVICE
-114;7;PEST CONTROL SERVICE
-115;10;INSURANCE-VEHICLE
-116;10;INSURANCE-MARINE
-117;10;INSURANCE-ACCIDENTAL
-118;10;INSURANCE-MEDICLAIM
-119;14;SUPPLY-WATER TANKER
-120;14;ELECTRICITY CHARGES
-121;14;PNG CHARGES
-122;14;WATER CHARGES
-123;19;RENTAL-VEHICLES (FRE-IN)
-124;19;FRE IN-AIR TRANSPORT
-125;19;FRE IN-RAILWAY TRANSPORT
-126;19;FRE IN-ROAD TRANSPORT
-127;19;FRE OUT (EXP)-COASTAL & TRANSOCEANIC
-128;19;FRE OUT-ROAD TRANSPORT
-129;19;FRE OUT (EXP)-AIR FREIGHT
-130;19;RENTAL-VEHICLES (FRE-OUT)
-131;19;FRE OUT-AIR TRANSPORT
-132;19;FRE OUT-RAILWAY TRANSPORT
-133;18;EXHAUST FAN SERVICE
-134;18;DISMANTLING-CABLE TRAY/RACEWAY 
-135;18;INSTALLATION-CABLE TRAY/RACEWAY 
-136;18;CEILING FAN SERVICE
-137;18;REPAIR-COOLER
-138;18;INSTALLATION-DIGITAL METER & SERVICE
-139;18;DISMANTLING-EARTHING WIRE LAYING
-140;18;DISMANTLING-CABLE 
-141;18;CABLE LAYING SERVICE
-142;18;ELECTRICAL PANEL ACCESSORIES FIXING
-143;18;ELECTRICAL TESTING SERVICE
-144;18;HT CABLE TERMINATION SERVICE
-145;18;INSTALLATION-HT PANEL & SERVICE
-146;18;INSTALLATION-L. SWITCH/SENSOR & SERVICE
-147;18;INSTALLATION-LED PANEL LIGHT & SERVICE
-148;18;INSTALLATION-LT PANEL & SERVICE
-149;18;LT SWITCH GEAR SERVICE
-150;18;MOTOR/ALTERNATOR REWINDING
-151;18;INSTALLATION-STREET LIGHT & SERVICE
-152;18;INSTALLATION-TRANSFORMER & SERVICE
-153;18;DISMANTLING-EXHAUST FAN
-154;18;MAINTENANCE OF EXHAUST FAN
-155;15;CALIBRATION/HARDNESS
-156;15;ENVIRONMENTAL PROTECTION
-157;11;RENTAL-TRACTOR TROLLEY
-158;11;RENTAL-FIRE TENDER WITH DCPO & FIRE MAN
-159;11;RENTAL-PARKING
-160;11;RENTAL-PHOTOCOPY MACHINE/PRINTER
-161;11;RENTAL-OFFICE
-162;11;RENTAL-HOUSE KEEPING EQUIPMENT
-163;11;RENTAL-COOLER
-164;11;RENTAL-DESKTOPS/LAPTOPS
-165;11;RENTAL-PRINTER
-166;11;RENTAL-DG SET
-167;11;RENTAL-WELDING MACHINE
-168;11;RENTAL-FOLDABLE CRATE
-169;11;RENTAL-FACTORY
-170;11;RENTAL-WAREHOUSE
-171;11;RENTAL-FORKLIFT/CRANE
-172;11;RENTAL-M/C & EQUIPMENT
-173;20;BOARDING & LODGING
-174;20;REFRESHMENT
-175;17;INSTALLATION-TFT/MONITOR/LED TV
-176;17;INTERNET LEASE LINE CHARGES
-177;17;HARD DISC DATA RECOVERY CHARGES
-178;17;IT DESIGN AND DEVELOPMENT
-179;17;DOMAIN RENEWAL CHARGE
-180;17;MS LICENSE
-181;17;RENEWAL-AUTODESK
-182;17;RENEWAL-PTC CREO
-183;17;SD-WAN DEVICE
-184;17;CLOUD HOSTING
-185;16;WEB PAGE DESIGN
-186;16;WEBSITE DESIGNING
-187;16;WEBSITE MAINTENANCE
-188;16;DESIGNING & PRINTING
-189;16;BROADCASTING PROGRAMMING
-190;16;DIGITAL CONTENT DEVELOPMENT
-191;16;ADVERTISEMENT
-192;13;LUNCH/DINNER/SNACKS
-193;13;CANTEEN FOOD
-194;13;FOOD/CATERING SERVICES
-195;13;MORNING/EVENING-TEA/SNACKS
-196;12;MEMBERSHIP & SUBSCRIPTION-ADMIN
-197;12;MEMBERSHIP & SUBSCRIPTION-FINANCE
-198;6;CLEANING OF SEPTIC TANK & PIT
-199;6;SANITATION & RELATED SERVICE
-200;6;WASHING, CLEANING & DYEING
-201;6;CONTRACT HOUSEKEEPING 
-202;6;CONTRACT SECURITY
-203;6;CONTRACT LABOUR SERVICES
-204;6;DISINFECTING & EXTERMINATING SERVICE
-205;6;CONTRACT RETAINERSHIP STAFF
-206;9;CATERING IN EXHIBITION, HALLS
-207;9;DECORATION
-208;9;EVENT MANAGEMENT
-209;9;FOOD, EDIBLE PREPARATIONS
-210;9;TENT OR PANDAL OR SHAMIANA
-211;9;EVENTS/SEMINAR CHARGES
-212;9;SPONSERSHIP
-213;9;SPACE BOOKING & RELATED INSTALLATION
-214;8;TELEPHONE CABLE LAYING & SERVICE
-215;8;TELEPHONE INSTRUMENT FIXING & TESTING
-216;8;POSTAL & COURIER SERVICES
-217;8;FIXED TELEPHONE SERVICES
-218;8;MOBILE TELECOM SERVICES
-219;8;CCTV FIXING & TESTING
-220;8;FIBER OPTIC CABLE LAYING & SERVICE
-221;8;INTERNET CHRGS PVT NETWORK
-222;8;INTERNET ACCESS SERVICES WIRED&WIREDLESS
+ID,SERVICE_CATEGORY,SERVICE_GROUP,SERVICE,Approver1,Approver1_Email,Approver2,Approver2_Email,Approver3,Approver3_Email
+1,ADMIN SERVICE,REPAIR & MAINTANENCE,AMC-STAMPING OF WEIGHING SYSTEM,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+2,ADMIN SERVICE,REPAIR & MAINTANENCE,AMC-FIRE EXTINGUISHER,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+3,ADMIN SERVICE,REPAIR & MAINTANENCE,AMC-RODENT CONTROL,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+4,ADMIN SERVICE,REPAIR & MAINTANENCE,AMC-RO PLANT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+5,ADMIN SERVICE,REPAIR & MAINTANENCE,AMC-EXTENDED WARRANTY,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+6,ADMIN SERVICE,REPAIR & MAINTANENCE,AMC-SOLAR COMPREHENSIVE O&M,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+7,ADMIN SERVICE,AUDIT SERVICE,AUDIT-ENERGY ASSESSMENT (ENERGY + WATER),Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+8,ADMIN SERVICE,AUDIT SERVICE,AUDIT-SAFETY SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+9,ADMIN SERVICE,BOARDING/LODGING/TRAVEL,BOARDING & LODGING/HOTEL STAY-EMPLOYEE,VK Tyagi,vktyagi@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+10,ADMIN SERVICE,BOARDING/LODGING/TRAVEL,PICK & DROP TRANSPORT SERVICE-EMPLOYEES ,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+11,ADMIN SERVICE,BOARDING/LODGING/TRAVEL,TAXI SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+12,ADMIN SERVICE,BOARDING/LODGING/TRAVEL,AIR TRAVEL-EMPLOYEE,VK Tyagi,vktyagi@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+13,ADMIN SERVICE,CIVIL REPAIR,BENDING & FIXING OF TMT BAR-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+14,ADMIN SERVICE,CIVIL REPAIR,CIVIL INTERIOR WORK-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+15,ADMIN SERVICE,CIVIL REPAIR,CIVIL TESTING SERVICE-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+16,ADMIN SERVICE,CIVIL REPAIR,DISMANTLING BRICK WORK-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+17,ADMIN SERVICE,CIVIL REPAIR,DISMANTLING RCC-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+18,ADMIN SERVICE,CIVIL REPAIR,EXCAVATION OF SOIL-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+19,ADMIN SERVICE,CIVIL REPAIR,FIXING OF ACC SHEET,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+20,ADMIN SERVICE,CIVIL REPAIR,FLOORING WORK-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+21,ADMIN SERVICE,CIVIL REPAIR,WATER PROOFING WORK,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+22,ADMIN SERVICE,CIVIL REPAIR,RAIN WATER HARVESTING SYSTEM-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+23,ADMIN SERVICE,CIVIL REPAIR,SUPPLY & FIXING CERAMIC TILES-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+24,ADMIN SERVICE,CIVIL REPAIR,SUPPLY & LAYING KOTA STONE-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+25,ADMIN SERVICE,CIVIL REPAIR,"REPAIR,ALTERATION,RENOVATION-BUILDING",Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+26,ADMIN SERVICE,CIVIL REPAIR,SUPPLY & LAYING BRICK WORK-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+27,ADMIN SERVICE,CIVIL REPAIR,SUPPLY & LAYING CEMENT SAND PLASTER-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+28,ADMIN SERVICE,CIVIL REPAIR,SUPPLY & LAYING CONCRETE STONE WALL-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+29,ADMIN SERVICE,CIVIL REPAIR,MIXING & LAYING GROUTING POWDER,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+30,ADMIN SERVICE,CIVIL REPAIR,PROVIDING & FIXING-SHUTTERING,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+31,ADMIN SERVICE,CIVIL REPAIR,DISMANTLING OFFICE/PUFF PANEL-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+32,ADMIN SERVICE,CIVIL REPAIR,FABRICATION OF GATE/WINDOW/SHUTTER,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+33,ADMIN SERVICE,CIVIL REPAIR,FABRICATION OF OFFICE/PUFF PANEL,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+34,ADMIN SERVICE,CIVIL REPAIR,FALL CEILING-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+35,ADMIN SERVICE,CIVIL REPAIR,INSTALLATION-OFFICE/PUFF PANEL,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+36,ADMIN SERVICE,CIVIL REPAIR,GATE/WINDOW/SHUTTER-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+37,ADMIN SERVICE,CIVIL REPAIR,PAINTING-WEATHER PROOF APPLICATION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+38,ADMIN SERVICE,CIVIL REPAIR,PAINTING-ANTI FUNGAL APPLICATION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+39,ADMIN SERVICE,CIVIL REPAIR,PAINTING-EPOXY APPLICATION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+40,ADMIN SERVICE,CIVIL REPAIR,PAINTING-PRIMER APPLICATION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+41,ADMIN SERVICE,CIVIL REPAIR,PAINTING-WALL PUTTY APPLICATION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+42,ADMIN SERVICE,CIVIL REPAIR,PAINTING-WHITE WASH APPLICATION ,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+43,ADMIN SERVICE,CIVIL REPAIR,PLUMBING SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+44,ADMIN SERVICE,CIVIL REPAIR,EARTH/ASH WORK IN BACK FILLING -REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+45,ADMIN SERVICE,CONSULTANCY,CONSULTANCY-ARCHITECTURAL (ADMIN),Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+46,ADMIN SERVICE,CONSULTANCY,CONSULTANCY-PROPERTY BROKERAGE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+47,ADMIN SERVICE,CONSULTANCY,CONSULTANCY-CIVIL SERVICE NON ARCHITECTURAL(ADMIN),Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+48,ADMIN SERVICE,CONSULTANCY,CONSULTANCY-FIRE NOC,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+49,ADMIN SERVICE,CONSULTANCY,CONSULTANCY-LICENCING SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+50,ADMIN SERVICE,CONSULTANCY,CONSULTANCY-SURVEY SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+51,ADMIN SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,CLEANING OF SEPTIC TANK & PIT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+52,ADMIN SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,SANITATION & RELATED SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+53,ADMIN SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,"WASHING, CLEANING & DYEING",Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+54,ADMIN SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,CONTRACT HOUSEKEEPING ,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+55,ADMIN SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,CONTRACT SECURITY,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+56,ADMIN SERVICE,EHS,WASTE COLLECTION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+57,ADMIN SERVICE,EHS,FIRE ALARM SYSTEM SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+58,ADMIN SERVICE,EHS,GARDENING EXPENSES,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+59,ADMIN SERVICE,EHS,MEDICAL SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+60,ADMIN SERVICE,EHS,PEST CONTROL SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+61,ADMIN SERVICE,COMMUNICATION/NETWORKING SERVICE,TELEPHONE CABLE LAYING & SERVICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+62,ADMIN SERVICE,COMMUNICATION/NETWORKING SERVICE,TELEPHONE INSTRUMENT FIXING & TESTING,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+63,ADMIN SERVICE,EVENTS/SEMINARS/EXHIBITION,"CATERING IN EXHIBITION, HALLS",Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+64,ADMIN SERVICE,EVENTS/SEMINARS/EXHIBITION,DECORATION,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+65,ADMIN SERVICE,EVENTS/SEMINARS/EXHIBITION,EVENT MANAGEMENT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+66,ADMIN SERVICE,EVENTS/SEMINARS/EXHIBITION,"FOOD, EDIBLE PREPARATIONS",Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+67,ADMIN SERVICE,EVENTS/SEMINARS/EXHIBITION,TENT OR PANDAL OR SHAMIANA,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+68,ADMIN SERVICE,INSURANCE,INSURANCE-VEHICLE,Pankaj Kumar,pankaj@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+69,ADMIN SERVICE,LEASE & RENTAL,RENTAL-TRACTOR TROLLEY,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+70,ADMIN SERVICE,LEASE & RENTAL,RENTAL-FIRE TENDER WITH DCPO & FIRE MAN,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+71,ADMIN SERVICE,LEASE & RENTAL,RENTAL-PARKING,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+72,ADMIN SERVICE,LEASE & RENTAL,RENTAL-PHOTOCOPY MACHINE/PRINTER,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+73,ADMIN SERVICE,LEASE & RENTAL,RENTAL-OFFICE,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+74,ADMIN SERVICE,LEASE & RENTAL,RENTAL-HOUSE KEEPING EQUIPMENT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+75,ADMIN SERVICE,LEASE & RENTAL,RENTAL-COOLER,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+76,ADMIN SERVICE,MEMBERSHIP & SUBSCRIPTION,MEMBERSHIP & SUBSCRIPTION-ADMIN,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+77,ADMIN SERVICE,COMMUNICATION/NETWORKING SERVICE,POSTAL & COURIER SERVICES,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+78,ADMIN SERVICE,REFRESHMENT & PANTRY,LUNCH/DINNER/SNACKS,Manually,,Manually,,Manually,
+79,ADMIN SERVICE,REFRESHMENT & PANTRY,CANTEEN FOOD,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+80,ADMIN SERVICE,REFRESHMENT & PANTRY,FOOD/CATERING SERVICES,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+81,ADMIN SERVICE,REFRESHMENT & PANTRY,MORNING/EVENING-TEA/SNACKS,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+82,ADMIN SERVICE,REPAIR & MAINTANENCE,FIRE EXTINGUISHER-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+83,ADMIN SERVICE,REPAIR & MAINTANENCE,FURNITURE-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+84,ADMIN SERVICE,REPAIR & MAINTANENCE,READER SAVIOR-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+85,ADMIN SERVICE,REPAIR & MAINTANENCE,VEHICLE & SERVICE-REPAIR/MAINT,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+86,ADMIN SERVICE,COMMUNICATION/NETWORKING SERVICE,FIXED TELEPHONE SERVICES,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+87,ADMIN SERVICE,COMMUNICATION/NETWORKING SERVICE,MOBILE TELECOM SERVICES,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+88,ADMIN SERVICE,COMMUNICATION/NETWORKING SERVICE,CCTV FIXING & TESTING,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+89,ADMIN SERVICE,UTILITY,SUPPLY-WATER TANKER,Manoj Batra,batra@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+90,CORPORATE SERVICE,CONSULTANCY,CONSULTANCY-PROJECT MGMT. & EXECUTION,Permeshwar,permeshwer@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+91,CORPORATE SERVICE,CONSULTANCY,CONSULTANCY-TRADE MARK FEES,Vikram Mehra,vikram@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+92,CORPORATE SERVICE,CONSULTANCY,CONSULTANCY-MANAGEMENT,Permeshwar,permeshwer@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+93,ENGINEERING SERVICE,CONSULTANCY,CONSULTANCY-CONTINUING ASSMENT IATF,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+94,ENGINEERING SERVICE,CONSULTANCY,CONSULTANCY-DESIGN/DRAWING,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+95,ENGINEERING SERVICE,CONSULTANCY,CONSULTANCY-ENGINEERING ADVISORY,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+96,ENGINEERING SERVICE,CONSULTANCY,CONSULTANCY-THIRD PARTY INSPECTION,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+97,ENGINEERING SERVICE,TESTING SERVICE,CALIBRATION/HARDNESS,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+98,ENGINEERING SERVICE,TESTING SERVICE,ENVIRONMENTAL PROTECTION,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+99,FINANCIAL SERVICE,AUDIT SERVICE,AUDIT -COST AUDIT,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+100,FINANCIAL SERVICE,AUDIT SERVICE,AUDIT -TAX AUDIT,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+101,FINANCIAL SERVICE,AUDIT SERVICE,AUDIT -INTERNAL AUDIT,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+102,FINANCIAL SERVICE,AUDIT SERVICE,AUDIT -STATUTORY AUDIT,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+103,FINANCIAL SERVICE,CONSULTANCY,CONSULTANCY-LEGAL,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+104,FINANCIAL SERVICE,CONSULTANCY,CONSULTANCY-ACCOUNT/TAX ,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+105,FINANCIAL SERVICE,CONSULTANCY,CONSULTANCY-GST ,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+106,FINANCIAL SERVICE,CONSULTANCY,CONSULTANCY-RATING,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+107,FINANCIAL SERVICE,CONSULTANCY,CONSULTANCY-EXIM,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+108,FINANCIAL SERVICE,CONSULTANCY,CONSULTANCY-IPO/INVESTOR RELATION,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+109,FINANCIAL SERVICE,INSURANCE,INSURANCE-MARINE,Pankaj Kumar,pankaj@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+110,FINANCIAL SERVICE,MEMBERSHIP & SUBSCRIPTION,MEMBERSHIP & SUBSCRIPTION-FINANCE,Anurag Saxena,anuragsaxena@impauto.com,Dilip Tuli,diliptuli@impauto.com,Tarun Lamba,vickie@impauto.com
+111,HR SERVICE,BOARDING/LODGING/TRAVEL,LODGING & FOOD SERVICE-EMPLOYEE,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+112,HR SERVICE,CONSULTANCY,COMPLIANCE-HR,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+113,HR SERVICE,CONSULTANCY,CONSULTANCY-AUDIOVISUAL &RELATED SERVICE,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+114,HR SERVICE,CONSULTANCY,CONSULTANCY-RESEARCH &PUBLIC OPINION POLL,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+115,HR SERVICE,CONSULTANCY,CONSULTANCY-ACTUARIAL,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+116,HR SERVICE,CONSULTANCY,CONSULTANCY-ESI,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+117,HR SERVICE,CONSULTANCY,CONSULTANCY-ESG REPORTING,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+118,HR SERVICE,CONSULTANCY,CONSULTANCY-ENVIRONMENTAL,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+119,HR SERVICE,CONSULTANCY,CONSULTANCY-FACTORY LAYOUT,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+120,HR SERVICE,CONSULTANCY,CONSULTANCY-HR TRAINING,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+121,HR SERVICE,CONSULTANCY,CONSULTANCY-RETAINERSHIP,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+122,HR SERVICE,CONSULTANCY,PLACEMENT SERVICE,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+123,HR SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,CONTRACT RETAINERSHIP STAFF,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+124,HR SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,CONTRACT LABOUR SERVICES,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+125,HR SERVICE,EVENTS/SEMINARS/EXHIBITION,EVENTS/SEMINAR CHARGES,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+126,HR SERVICE,INSURANCE,INSURANCE-ACCIDENTAL,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+127,HR SERVICE,INSURANCE,INSURANCE-MEDICLAIM,Vishal Kampani,vishal@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+128,IT SERVICE,WEB PAGE/ SITE-DESIGN & MAINTANENCE,WEB PAGE DESIGN,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+129,IT SERVICE,WEB PAGE/ SITE-DESIGN & MAINTANENCE,WEBSITE DESIGNING/ MAINTANENCE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+130,IT SERVICE,REPAIR & MAINTANENCE,AMC-UPS & BATTERY CHARGER,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+131,IT SERVICE,REPAIR & MAINTANENCE,AMC-CISCO DEVICES,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+132,IT SERVICE,REPAIR & MAINTANENCE,AMC-COMPREHENSIVE SUPPORT,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+133,IT SERVICE,REPAIR & MAINTANENCE,AMC-PRINTER,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+134,IT SERVICE,REPAIR & MAINTANENCE,AMC-SAVIOR HARDWARE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+135,IT SERVICE,REPAIR & MAINTANENCE,AMC-SAVIOR SOFTWARE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+136,IT SERVICE,REPAIR & MAINTANENCE,AMC-S/4 HANA LICENSE SUBSCRIPTION,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+137,IT SERVICE,REPAIR & MAINTANENCE,AMC-SOFTWARE SUPPORT,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+138,IT SERVICE,IT MAINTANENCE SERVICE,INSTALLATION-TFT/MONITOR/LED TV,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+139,IT SERVICE,IT MAINTANENCE SERVICE,INTERNET LEASE LINE CHARGES,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+140,IT SERVICE,IT MAINTANENCE SERVICE,HARD DISC DATA RECOVERY CHARGES,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+141,IT SERVICE,IT MAINTANENCE SERVICE,IT DESIGN AND DEVELOPMENT,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+142,IT SERVICE,IT MAINTANENCE SERVICE,DOMAIN RENEWAL CHARGE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+143,IT SERVICE,IT MAINTANENCE SERVICE,MS LICENSE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+144,IT SERVICE,IT MAINTANENCE SERVICE,RENEWAL-AUTODESK,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+145,IT SERVICE,IT MAINTANENCE SERVICE,RENEWAL-PTC CREO,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+146,IT SERVICE,IT MAINTANENCE SERVICE,SD-WAN DEVICE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+147,IT SERVICE,IT MAINTANENCE SERVICE,CLOUD HOSTING,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+148,IT SERVICE,LEASE & RENTAL,RENTAL-DESKTOPS/LAPTOPS,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+149,IT SERVICE,LEASE & RENTAL,RENTAL-PRINTER,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+150,IT SERVICE,REPAIR & MAINTANENCE,PRINTER/DESKTOP/LAPTOP-REPAIR/MAINT,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+151,IT SERVICE,COMMUNICATION/NETWORKING SERVICE,FIBER OPTIC CABLE LAYING & SERVICE,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+152,IT SERVICE,COMMUNICATION/NETWORKING SERVICE,INTERNET CHRGS PVT NETWORK,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+153,IT SERVICE,COMMUNICATION/NETWORKING SERVICE,INTERNET ACCESS SERVICES WIRED&WIREDLESS,Anup Awasthi,anup@impauto.com,Punit Rastogi,punitrastogi@impauto.com,Tarun Lamba,vickie@impauto.com
+154,MAINTANENCE SERVICE,CIVIL REPAIR,DISMANTLING  PIPE FITTING & ACCESSORIES-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+155,MAINTANENCE SERVICE,ELECTRICAL,EXHAUST FAN-REPAIR/MAINT/DISMANTLE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+156,MAINTANENCE SERVICE,ELECTRICAL,DISMANTLING CABLE TRAY/RACEWAY-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+157,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-CABLE TRAY/RACEWAY ,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+158,MAINTANENCE SERVICE,ELECTRICAL,CEILING FAN SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+159,MAINTANENCE SERVICE,ELECTRICAL,COOLER-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+160,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-DIGITAL METER & SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+161,MAINTANENCE SERVICE,ELECTRICAL,DISMANTLING EARTHING WIRE LAYING-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+162,MAINTANENCE SERVICE,ELECTRICAL,DISMANTLING CABLE-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+163,MAINTANENCE SERVICE,ELECTRICAL,CABLE LAYING SERVICE-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+164,MAINTANENCE SERVICE,ELECTRICAL,ELECTRICAL PANEL ACCESSORIES FIXING,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+165,MAINTANENCE SERVICE,ELECTRICAL,ELECTRICAL TESTING SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+166,MAINTANENCE SERVICE,ELECTRICAL,HT CABLE TERMINATION SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+167,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-HT PANEL & SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+168,MAINTANENCE SERVICE,ELECTRICAL,L. SWITCH/SENSOR & SERVICE-REPAIR/INSTT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+169,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-LED PANEL LIGHT & SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+170,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-LT PANEL & SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+171,MAINTANENCE SERVICE,ELECTRICAL,LT SWITCH GEAR SERVICE-REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+172,MAINTANENCE SERVICE,ELECTRICAL,MOTOR/ALTERNATOR REWINDING,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+173,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-STREET LIGHT & SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+174,MAINTANENCE SERVICE,ELECTRICAL,INSTALLATION-TRANSFORMER & SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+175,MAINTANENCE SERVICE,LEASE & RENTAL,RENTAL-DG SET,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+176,MAINTANENCE SERVICE,LEASE & RENTAL,RENTAL-WELDING MACHINE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+177,MAINTANENCE SERVICE,REPAIR & MAINTANENCE,EXCAVATING & EARTHMOVING -REPAIR/MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+178,MAINTANENCE SERVICE,REPAIR & MAINTANENCE,MASONRY SERVICES,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+179,MAINTANENCE SERVICE,REPAIR & MAINTANENCE,AC INSTALL/DISMANTLE/SERVICE & MAINT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+180,MAINTANENCE SERVICE,REPAIR & MAINTANENCE,RESHARPEN OF SAW/BLADE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+181,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-FORKLIFT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+182,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-LAB EQUIPMENT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+183,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-LASER MARKING MACHINE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+184,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-MARKING MACHINE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+185,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC- CHILLER,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+186,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-AIR COMPRESSOR,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+187,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-DG/GG SET,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+188,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-LIFTING EQUIPMENTS,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+189,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-PLANT & MACHINERIES,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+190,MANUFACTURING SERVICE,REPAIR & MAINTANENCE,AMC-POWER DISTRIBUTION SYSTEM,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+191,MANUFACTURING SERVICE,CONSULTANCY,CONSULTANCY-OPERATIONS,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+192,MANUFACTURING SERVICE,LEASE & RENTAL,RENTAL-FOLDABLE CRATE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+193,MANUFACTURING SERVICE,LEASE & RENTAL,RENTAL-FACTORY,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+194,MANUFACTURING SERVICE,LEASE & RENTAL,RENTAL-WAREHOUSE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+195,MANUFACTURING SERVICE,LEASE & RENTAL,RENTAL-FORKLIFT/CRANE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+196,MANUFACTURING SERVICE,LEASE & RENTAL,RENTAL-M/C & EQUIPMENT,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+197,MANUFACTURING SERVICE,LOGISTIC,RENTAL-VEHICLES (FRE-IN),SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+198,MANUFACTURING SERVICE,LOGISTIC,FRE IN-AIR TRANSPORT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+199,MANUFACTURING SERVICE,LOGISTIC,FRE IN-RAILWAY TRANSPORT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+200,MANUFACTURING SERVICE,LOGISTIC,FRE IN-ROAD TRANSPORT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+201,MANUFACTURING SERVICE,CONTRACT STAFFING/HOUSEKEEPING/SECUIRTY,DISINFECTING & EXTERMINATING SERVICE,Division Head,,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Tarun Lamba,vickie@impauto.com
+202,MANUFACTURING SERVICE,UTILITY,ELECTRICITY CHARGES,Plant Head,,N/A,,N/A,
+203,MANUFACTURING SERVICE,UTILITY,PNG CHARGES,Plant Head,,N/A,,N/A,
+204,MANUFACTURING SERVICE,UTILITY,WATER CHARGES,Plant Head,,N/A,,N/A,
+205,MARKETING SERVICE,ADVERTISEMENT/CATALOGUE/DIGITAL MARKETING,DESIGNING & PRINTING,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+206,MARKETING SERVICE,ADVERTISEMENT/CATALOGUE/DIGITAL MARKETING,BROADCASTING PROGRAMMING,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+207,MARKETING SERVICE,ADVERTISEMENT/CATALOGUE/DIGITAL MARKETING,DIGITAL CONTENT DEVELOPMENT,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+208,MARKETING SERVICE,ADVERTISEMENT/CATALOGUE/DIGITAL MARKETING,ADVERTISEMENT,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+209,MARKETING SERVICE,EVENTS/SEMINARS/EXHIBITION,SPONSERSHIP,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+210,MARKETING SERVICE,EVENTS/SEMINARS/EXHIBITION,EXHIBITION SPACE BOOKING & RELATED INSTALLATION,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+211,SELLING & DISTRIBUTION SERVICE,BUSINESS PROMOTION,BOARDING & LODGING-CUSTOMER,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+212,SELLING & DISTRIBUTION SERVICE,BUSINESS PROMOTION,REFRESHMENT-CUSTOMER,Sunil Gupta,sunil@impauto.com,Tarun Lamba,vickie@impauto.com,N/A, 
+213,SELLING & DISTRIBUTION SERVICE,LOGISTIC,FRE OUT (EXP)-COASTAL & TRANSOCEANIC,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+214,SELLING & DISTRIBUTION SERVICE,LOGISTIC,FRE OUT-ROAD TRANSPORT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+215,SELLING & DISTRIBUTION SERVICE,LOGISTIC,FRE OUT (EXP)-AIR FREIGHT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+216,SELLING & DISTRIBUTION SERVICE,LOGISTIC,RENTAL-VEHICLES (FRE-OUT),SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+217,SELLING & DISTRIBUTION SERVICE,LOGISTIC,FRE OUT-AIR TRANSPORT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+218,SELLING & DISTRIBUTION SERVICE,LOGISTIC,FRE OUT-RAILWAY TRANSPORT,SK Sinha,sksinha@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+219,CAPEX SERVICES,CIVIL WORK,CIVIL INTERIOR WORK-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+220,CAPEX SERVICES,CIVIL WORK,FLOORING WORK-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+221,CAPEX SERVICES,CIVIL WORK,RAIN WATER HARVESTING SYSTEM-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+222,CAPEX SERVICES,CIVIL WORK,SUPPLY & LAYING RCC-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+223,CAPEX SERVICES,CIVIL WORK,SUPPLY & LAYING BRICK WORK-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+224,CAPEX SERVICES,CIVIL WORK,SUPPLY & LAYING CONCRETE STONE WALL-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+225,CAPEX SERVICES,CIVIL WORK,FALL CEILING WORK,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+226,CAPEX SERVICES,CIVIL WORK,"CONTRACT LABOUR FOR CONSTRUCTION,INSTALLATION,COMMISSIONING",Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+227,CAPEX SERVICES,LOGISTIC,FRE IN-ROAD TRANSPORT-CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+228,CAPEX SERVICES,CONSULTANCY,CONSULTANCY-ARCHITECTURAL CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+229,CAPEX SERVICES,CONSULTANCY,CONSULTANCY-CIVIL SERVICE NON ARCHITECTURAL CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+230,CAPEX SERVICES,ELECTRICAL,CABLE LAYING SERVICE- CAPEX/NEW,Ashmita,ashmita@impauto.com,NK Vedi,nkvedi@impauto.com,Tarun Lamba,vickie@impauto.com
+231,IT SERVICE,SOFTWARE,PLANT AUTOMATION & DIGITALISATION,Metal-Deepak Malik/Rubber-RP Singh,rajeshsehgal@impauto.com/manishgupta8@kpmg.com,Punit Rastogi,rajeshsehgal@impauto.com,Tarun Lamba,manishgupta8@kpmg.com

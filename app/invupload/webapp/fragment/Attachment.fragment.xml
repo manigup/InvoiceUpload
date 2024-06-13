@@ -4,10 +4,9 @@
 >
     <Popover
         showHeader="false"
-        placement="Left"
         modal="true"
         titleAlignment="Center"
-        contentMinWidth="350px"
+        contentMinWidth="400px"
         afterClose="onPopOverAfterClose"
         id="attachPopover"
     >

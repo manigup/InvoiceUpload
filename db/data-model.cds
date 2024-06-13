@@ -16,16 +16,32 @@ entity UploadInvoice : managed {
       AccountingNumber   : String default '';
       GST                : Integer;
       PlantCode          : String(3);
-      HodApprover        : String @(restrict: [{
-        grant: ['WRITE'],
-        where: 'CreatedBy = $user'
-      }]);
-      HodApproverName    : String default '';
       FinanceApprover    : String default '';
       FinApproverName    : String default '';
-      HodRemarks         : String default '';
       FinRemarks         : String default '';
-      ApprovedAt         : DateTime;
+      FinApprovedAt      : DateTime default '';
+      L1HodApprover      : String @(restrict: [{
+        grant: ['WRITE'],
+        where: 'CreatedBy = $user'
+      }]) default '';
+      L1HodApproverName  : String default '';
+      L1HodRemarks       : String default '';
+      L1ApprovedAt       : DateTime default '';
+      L2HodApprover      : String @(restrict: [{
+        grant: ['WRITE'],
+        where: 'CreatedBy = $user'
+      }]) default '';
+      L2HodRemarks       : String default '';
+      L2HodApproverName  : String default '';
+      L2ApprovedAt       : DateTime default '';
+      L3HodApprover      : String @(restrict: [{
+        grant: ['WRITE'],
+        where: 'CreatedBy = $user'
+      }]) default '';
+      L3HodRemarks       : String default '';
+      L3HodApproverName  : String default '';
+      L3ApprovedAt       : DateTime default '';
+      Action             : String(1);
       Status             : String;
 }
 
@@ -43,34 +59,27 @@ entity Attachments : managed {
 }
 
 entity FinanceMaster {
-  key Id       : Int16;
-      FinEmail : String;
-      FinName  : String;
-};
-
-entity InvoiceType {
-  key Id            : Int16;
-      Type          : String;
-      ApproverEmail : String;
-      ApproverName  : String;
-};
-
-entity Department {
-  key DeptId        : Int16;
-      DeptName      : String;
-      ApproverEmail : String;
-      ApproverName  : String;
-};
-
-entity ServiceGroup {
-  key GroupId   : Int16;
-      GroupName : String;
-      Service   : Composition of many Service
-                    on Service.GroupId = $self;
+  key Plant : String(3);
+      Email : String default '';
 };
 
 entity Service {
-  key ServiceId   : Int16;
-  key GroupId     : Association to ServiceGroup;
-      ServiceName : String;
+  key ID               : Int16;
+      SERVICE_CATEGORY : String;
+      SERVICE_GROUP    : String;
+      SERVICE          : String;
+      Approver1        : String;
+      Approver1_Email  : String default '';
+      Approver2        : String;
+      Approver2_Email  : String default '';
+      Approver3        : String;
+      Approver3_Email  : String default '';
+};
+
+entity PlantDetails {
+  key Unit_Code           : String;
+      Division_Head       : String;
+      Email_Division_Head : String default '';
+      Plant_Head          : String;
+      Email_Plant_Head    : String default '';
 };

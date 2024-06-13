@@ -29,14 +29,26 @@ formatter = {
         var text = "";
         if (status) {
             switch (status) {
-                case "HAP":
-                    text = "HOD Approval Pending";
+                case "PL1":
+                    text = "Purchase L1 Approval Pending";
                     break;
-                case "ABH":
-                    text = "Approved by HOD & Pending with Finance";
+                case "PL2":
+                    text = "Purchase L2 Approval Pending";
                     break;
-                case "RBH":
-                    text = "Rejected by HOD";
+                case "PL3":
+                    text = "Purchase L3 Approval Pending";
+                    break;
+                case "RL1":
+                    text = "Rejected by Purchase L1";
+                    break;
+                case "RL2":
+                    text = "Rejected by Purchase L2";
+                    break;
+                case "RL3":
+                    text = "Rejected by Purchase L3";
+                    break;
+                case "ABP":
+                    text = "Approved by Purchase & Pending with Finance";
                     break;
                 case "ABF":
                     text = "Approved by Finance";
@@ -55,8 +67,10 @@ formatter = {
                 case "ABF":
                     state = "Success";
                     break;
-                case "HAP":
-                case "ABH":
+                case "PL1":
+                case "PL2":
+                case "PL3":
+                case "ABP":
                     state = "Warning";
                     break;
                 default:
@@ -66,13 +80,20 @@ formatter = {
         }
         return state;
     },
-    checkApprovalAccess: function (status, hod) {
-        const finData = this.getModel("FinModel").getData(),
-            logUser = this.getModel().getHeaders().loginId;
-        if (finData.length > 0) {
-            if (status === "HAP" && hod === logUser) {
-                return true;
-            } else if (status === "ABH" && finData.findIndex(item => item.FinEmail === this.getModel().getHeaders().loginId) !== -1) {
+    checkApprovalAccess: function (status, l1, l2, l3) {
+        const finData = this.getModel("FinModel").getData();
+        if (status && finData.length > 0 && (l1 || l2 || l3)) {
+            if ((status === "PL1" || status === "PL2" || status === "PL3")) {
+                if (status === "PL1" && l1.includes(sap.ui.getCore().loginEmail)) {
+                    return true;
+                } else if (status === "PL2" && l2.includes(sap.ui.getCore().loginEmail)) {
+                    return true;
+                } else if (status === "PL3" && l3.includes(sap.ui.getCore().loginEmail)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if (status === "ABP" && finData.findIndex(item => item.Email.includes(sap.ui.getCore().loginEmail)) !== -1) {
                 return true;
             } else {
                 return false;
@@ -83,7 +104,7 @@ formatter = {
     },
     invNoLink: function (status, createdBy) {
         if (status && createdBy) {
-            if ((status === 'RBH' || status === 'RBF') && sap.ui.getCore().loginEmail === createdBy) {
+            if ((status === 'RL1' || status === "RL2" || status === "RL3" || status === 'RBF') && sap.ui.getCore().loginEmail === createdBy) {
                 return true;
             } else {
                 return false;

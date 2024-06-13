@@ -1,0 +1,21 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <SelectDialog
+        id="selectDialog"
+        title="Select Service"
+        titleAlignment="Center"
+        items="{/ServiceDetails}"
+        search=".onValueHelpSearch"
+        confirm=".onValueHelpClose"
+        cancel=".onValueHelpClose"
+        growing="true"
+        growingThreshold="50"
+    >
+        <StandardListItem
+            id="_IDGenStandardListItem1"
+            title="{SERVICE}"
+        />
+    </SelectDialog>
+</core:FragmentDefinition>

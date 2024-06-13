@@ -25,33 +25,100 @@ module.exports = cds.service.impl(async function () {
         }
 
         const records = await cds.run(cds.parse.cql("Select * from db.invoiceupload.UploadInvoice")),
-            finRecord = await cds.run(cds.parse.cql("Select FinEmail from db.invoiceupload.FinanceMaster"));
+            finRecord = await cds.run(cds.parse.cql("Select Email from db.invoiceupload.FinanceMaster"));
 
-        if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1 &&
-            records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
-            // user is both HOD & Finance
-            req.query.where(`HodApprover = '${userID}' and (Status = 'HAP' or Status = 'ABH')`);
-        } else if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1) {
-            // user is HOD
-            req.query.where(`HodApprover = '${userID}' and Status = 'HAP'`);
-        } else if (records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
-            // user is finance
-            req.query.where(`Status = 'ABH'`);
+        if (records.findIndex(item => item.L1HodApprover.includes(userID)) !== -1 ||
+            records.findIndex(item => item.L2HodApprover.includes(userID)) !== -1 ||
+            records.findIndex(item => item.L3HodApprover.includes(userID)) !== -1 ||
+            records.findIndex(item => item.Status === "ABP") !== -1 && finRecord.findIndex(item => item.Email.includes(userID)) !== -1) {
+            req.query.where(`(L1HodApprover LIKE '%${userID}%' or L2HodApprover LIKE '%${userID}%' or L3HodApprover LIKE '%${userID}%' or FinanceApprover LIKE '%${userID}%') and (Status = 'PL1' or Status = 'PL2' or Status = 'PL3' or Status = 'ABP')`);
         } else if (req.headers.logintype === "P") {
             req.query.where(`createdBy = '${userID}'`);
         } else {
             req.reject(404, "No data available");
         }
+
+        // else if (records.findIndex(item => item.Status === "HAP" && item.HodApprover === userID) !== -1) {
+        //     // user is HOD
+        //     req.query.where(`HodApprover = '${userID}' and Status = 'HAP'`);
+        // } else if (records.findIndex(item => item.Status === "ABH") !== -1 && finRecord.findIndex(item => item.FinEmail === userID) !== -1) {
+        //     // user is finance
+        //     req.query.where(`Status = 'ABH'`);
+        // } 
     });
 
     this.before('UPDATE', 'Invoice', async (req) => {
 
-        if (req.data.Status === "ABF") {
-            req.data.FinanceApprover = req.user.id;
-            // req.data.FinApproverName = JSON.stringify(req.user.attr.firstname);
-        }
-        if (req.data.Status !== "HAP") {
-            req.data.ApprovedAt = new Date();
+        const records = await cds.run(cds.parse.cql(`Select L1HodApprover,L2HodApprover,L3HodApprover,createdBy from db.invoiceupload.UploadInvoice where InvoiceNumber = '${req.data.InvoiceNumber}'`));
+
+        if (records.length > 0) {
+            let userID = req.user.id;
+
+            if (userID === "anonymous") {
+                userID = "sudhir@impauto.com";
+            }
+
+            if (req.data.Action === "E" && records[0].createdBy === userID) {
+                req.data.Status = "PL1";
+            } else {
+                switch (req.data.Status) {
+                    case "PL1":
+                        if (req.data.Action === "A" && records[0].L1HodApprover.includes(userID)) {
+                            if (records[0].L2HodApprover) {
+                                req.data.Status = "PL2";
+                            } else {
+                                req.data.Status = "ABP";
+                            }
+                        } else if (req.data.Action === "R" && records[0].L1HodApprover.includes(userID)) {
+                            req.data.Status = "RL1";
+                        } else {
+                            req.reject(401, "Unauthorized to perform this action");
+                        }
+                        req.data.L1ApprovedAt = new Date();
+                        break;
+                    case "PL2":
+                        if (req.data.Action === "A" && records[0].L2HodApprover.includes(userID)) {
+                            if (records[0].L3HodApprover) {
+                                req.data.Status = "PL3";
+                            } else {
+                                req.data.Status = "ABP";
+                            }
+                        } else if (req.data.Action === "R" && records[0].L2HodApprover.includes(userID)) {
+                            req.data.Status = "RL2";
+                        } else {
+                            req.reject(401, "Unauthorized to perform this action");
+                        }
+                        req.data.L2ApprovedAt = new Date();
+                        break;
+                    case "PL3":
+                        if (req.data.Action === "A" && records[0].L3HodApprover.includes(userID)) {
+                            req.data.Status = "ABP";
+                        } else if (req.data.Action === "R" && records[0].L3HodApprover.includes(userID)) {
+                            req.data.Status = "RL3";
+                        } else {
+                            req.reject(401, "Unauthorized to perform this action");
+                        }
+                        req.data.L3ApprovedAt = new Date();
+                        break;
+                    case "ABP":
+                        const finRecord = await cds.run(cds.parse.cql(`Select Email from db.invoiceupload.FinanceMaster where Plant = '${req.data.PlantCode}'`));
+
+                        if (finRecord.length > 0 && finRecord[0]?.Email.includes(userID)) {
+                            if (req.data.Action === "A") {
+                                req.data.Status = "ABF";
+                            } else if (req.data.Action === "R") {
+                                req.data.Status = "RBF";
+                            }
+                            req.data.FinApprovedAt = new Date();
+                            req.data.FinanceApprover = userID;
+                        } else {
+                            req.reject(401, "Unauthorized to perform this action");
+                        }
+                        break;
+                }
+            }
+        } else {
+            req.reject(404, "No entry found for entered invoice number");
         }
     });
 
@@ -68,16 +135,7 @@ module.exports = cds.service.impl(async function () {
             req.reject(400, 'Duplicate invoice number');
         }
 
-        // if (records.length > 0) {
-        //     const ref = records[records.length - 1].ReferenceNo.split("INV"),
-        //         next = (parseInt(ref[1]) + 1).toString(),
-        //         no = next.length === 1 ? "0" + next : next;
-        //     req.data.ReferenceNo = "INV" + no;
-        // } else {
-        //     req.data.ReferenceNo = "INV01";
-        // }
-
-        req.data.Status = "HAP"; // hod approval pending
+        req.data.Status = "PL1";
         req.data.Id = Math.random().toString().substr(2, 6);
 
         let connJwtToken;
@@ -101,7 +159,7 @@ module.exports = cds.service.impl(async function () {
 
         let connJwtToken;
         if (req.headers.origin.includes("port") || req.headers.origin.includes("impautosuppdev")) {
-            
+
             connJwtToken = await _fetchJwtToken(devSdm.url, devSdm.clientid, devSdm.clientsecret);
 
             req.data.ObjectId = await _uploadAttachment(ecmserviceurl, connJwtToken, devSdm.repositoryId, reqData[0], reqData[1]);
@@ -124,7 +182,7 @@ module.exports = cds.service.impl(async function () {
         const { content, toAddress } = req.data;
 
         const payload = {
-            Subject: "Invoice Submission Without PO/Schedule",
+            Subject: "Service Invoice Submission Without Purchase Order/Schedule",
             Content: `Dear ${toAddress.split("@")[0]}, ${content} | | Regards | ImperialAuto`,
             Seperator: "|",
             ToAddress: toAddress,

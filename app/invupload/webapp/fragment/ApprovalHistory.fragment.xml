@@ -1,0 +1,76 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Popover
+        id="_IDGenPopover1"
+        placement="Left"
+        title="Approval Details"
+        titleAlignment="Center"
+        afterClose="onPopOverAfterClose"
+        contentWidth="710px"
+    >
+        <Table
+            id="_IDGenTable1"
+            items="{HistoryModel>/}"
+        >
+            <columns>
+                <Column width="7rem">
+                    <Label
+                        design="Bold"
+                        text="Level"
+                    />
+                </Column>
+                <Column width="8rem">
+                    <Label
+                        design="Bold"
+                        text="Approver"
+                    />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                    width="10rem"
+                >
+                    <Label
+                        design="Bold"
+                        text="Approval Date &amp; Time"
+                        wrapping="true"
+                    />
+                </Column>
+                <Column
+                    minScreenWidth="Desktop"
+                    demandPopin="true"
+                    width="12rem"
+                >
+                    <Label
+                        design="Bold"
+                        text="Approver Remarks"
+                    />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem id="_IDGenColumnListItem1">
+                    <cells>
+                        <Text
+                            id="_IDGenText1"
+                            text="{HistoryModel>Level}"
+                        />
+                        <Text
+                            id="_IDGenText4"
+                            text="{HistoryModel>Approver}"
+                        />
+                        <Text
+                            id="_IDGenText2"
+                            text="{path:'HistoryModel>ApprovedAt',formatter:'formatter.dateFormat'} {path:'HistoryModel>ApprovedAt',formatter:'formatter.formatTime'}"
+                        />
+                        <Text
+                            id="_IDGenText3"
+                            text="{HistoryModel>Remarks}"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Popover>
+</core:FragmentDefinition>

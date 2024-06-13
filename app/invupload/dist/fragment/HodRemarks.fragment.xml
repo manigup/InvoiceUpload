@@ -6,7 +6,7 @@
     contentWidth="300px"
     afterClose="onDialogClose"
     titleAlignment="Center"
-    title="{= ${DecisionModel>/Action} === 'A' ? 'HOD Approval' : 'HOD Rejection'}"
+    title="{= ${DecisionModel>/Action} === 'A' ? 'Purchase Approval' : 'Purchase Rejection'}"
 >
     <content>
         <f:SimpleForm

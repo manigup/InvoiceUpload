@@ -71,6 +71,7 @@
                 forceSelection="false"
                 selectedKey="{DataModel>/PlantCode}"
                 items="{CodeDetails>/}"
+                change="onPlantChange"
             >
                 <core:Item
                     id="_IDGenItem5"
@@ -88,41 +89,55 @@
                 id="invType"
                 selectedKey="{DataModel>/InvoiceType}"
                 forceSelection="false"
-                items="{/InvoiceType}"
+                enabled="{= ${DataModel>/PlantCode} !== undefined &amp;&amp; ${DataModel>/TotalInvoiceAmount} !== undefined}"
                 change="setHodApprover($event,'C')"
             >
                 <core:Item
                     id="_IDGenItem1"
-                    key="{Type}"
-                    text="{Type}"
+                    key="Domestic Service Procurement"
+                    text="Domestic Service Procurement"
                 />
             </Select>
             <Label
-                id="_IDGenLabel9"
+                id="_IDGenLabel11"
                 required="true"
                 design="Bold"
-                text="Department"
+                text="Service"
             />
-            <ComboBox
-                id="dept"
-                selectedKey="{DataModel>/Department}"
+            <Input
+                id="service"
+                showValueHelp="true"
+                valueHelpOnly="true"
+                value="{DataModel>/Service}"
+                valueHelpRequest="onValueHelpRequest"
                 visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
-                items="{/Department}"
-                change="setHodApprover($event,'C')"
+            />
+            <!-- <Select
+                id="service"
+                visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                items="{/ServiceDetails}"
+                selectedKey="{DataModel>/Service}"
+                change="onServiceChange"
             >
                 <core:Item
-                    id="_IDGenItem2"
-                    key="{DeptName}"
-                    text="{DeptName}"
+                    id="_IDGenItem4"
+                    key="{SERVICE}"
+                    text="{SERVICE}"
                 />
-            </ComboBox>
+            </Select> -->
             <Label
                 id="_IDGenLabel10"
                 required="true"
                 design="Bold"
                 text="Service Group"
             />
-            <ComboBox
+            <Input
+                id="serviceGroup"
+                value="{DataModel>/ServiceGroup}"
+                visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                enabled="false"
+            />
+            <!-- <ComboBox
                 id="serviceGroup"
                 visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
                 items="{/ServiceGroup}"
@@ -134,25 +149,32 @@
                     key="{GroupName}"
                     text="{GroupName}"
                 />
-            </ComboBox>
+            </ComboBox> -->
             <Label
-                id="_IDGenLabel11"
+                id="_IDGenLabel9"
                 required="true"
                 design="Bold"
-                text="Service"
+                text="Department"
             />
-            <ComboBox
-                id="service"
+            <Input
+                id="dept"
+                value="{DataModel>/Department}"
                 visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
-                items="{ServiceModel>/}"
-                selectedKey="{DataModel>/Service}"
+                enabled="false"
+            />
+            <!-- <ComboBox
+                id="dept"
+                selectedKey="{DataModel>/Department}"
+                visible="{= ${DataModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                items="{/Department}"
+                change="setHodApprover($event,'C')"
             >
                 <core:Item
-                    id="_IDGenItem4"
-                    key="{ServiceModel>ServiceName}"
-                    text="{ServiceModel>ServiceName}"
+                    id="_IDGenItem2"
+                    key="{DeptName}"
+                    text="{DeptName}"
                 />
-            </ComboBox>
+            </ComboBox> -->
             <Label
                 id="_IDGenLabel6"
                 required="true"
@@ -167,12 +189,48 @@
             <Label
                 id="_IDGenLabel8"
                 design="Bold"
-                text="Approver"
+                required="true"
+                text="Purchase L1 Approver"
             />
             <Input
-                id="hod"
-                value="{DataModel>/HodApprover}"
-                enabled="false"
+                id="L1Approver"
+                value="{DataModel>/L1HodApprover}"
+                enabled="{= ${DataModel>/L1HodApprover} === null}"
+            />
+            <Label
+                id="_IDGenLabel101"
+                design="Bold"
+                required="true"
+                text="Purchase L2 Approver"
+            />
+            <Input
+                id="L2Approver"
+                value="{DataModel>/L2HodApprover}"
+                enabled="{= ${DataModel>/L2HodApprover} === null}"
+                visible="{= ${DataModel>/L2HodApprover} !== undefined &amp;&amp; ${DataModel>/InvoiceType} === 'Domestic Service Procurement' &amp;&amp; (parseInt(${DataModel>/TotalInvoiceAmount}) >= 200000)}"
+            />
+            <Label
+                id="_IDGenLabel102"
+                design="Bold"
+                required="true"
+                text="Purchase L3 Approver"
+            />
+            <Input
+                id="L3Approver"
+                value="{DataModel>/L3HodApprover}"
+                enabled="{= ${DataModel>/L3HodApprover} === null}"
+                visible="{= ${DataModel>/L3HodApprover} !== undefined &amp;&amp; ${DataModel>/InvoiceType} === 'Domestic Service Procurement' &amp;&amp; (parseInt(${DataModel>/TotalInvoiceAmount}) &gt; 2000000)}"
+            />
+            <Label
+                id="_IDGenLabel130"
+                design="Bold"
+                required="true"
+                text="Finance Approver"
+            />
+            <Input
+                id="finApprover"
+                value="{DataModel>/FinanceApprover}"
+                enabled="{= ${DataModel>/FinanceApprover} === ''}"
             />
             <Label
                 id="_IDGenLabel7"

@@ -62,6 +62,25 @@
                 value="{EditModel>/GST}"
             />
             <Label
+                id="_IDGenLabel110"
+                required="true"
+                design="Bold"
+                text="Plant Code"
+            />
+            <Select
+                id="pCode"
+                forceSelection="false"
+                selectedKey="{EditModel>/PlantCode}"
+                items="{CodeDetails>/}"
+                enabled="false"
+            >
+                <core:Item
+                    id="_IDGenItem5"
+                    key="{CodeDetails>code}"
+                    text="{CodeDetails>code}"
+                />
+            </Select>
+            <Label
                 id="_IDGenLabel5"
                 required="true"
                 design="Bold"
@@ -71,16 +90,53 @@
                 id="invType"
                 selectedKey="{EditModel>/InvoiceType}"
                 forceSelection="false"
-                items="{/InvoiceType}"
                 change="setHodApprover($event,'E')"
             >
                 <core:Item
                     id="_IDGenItem1"
-                    key="{Type}"
-                    text="{Type}"
+                    key="Domestic Service Procurement"
+                    text="Domestic Service Procurement"
                 />
             </Select>
             <Label
+                id="_IDGenLabel11"
+                required="true"
+                design="Bold"
+                text="Service"
+            />
+            <Input
+                id="service"
+                showValueHelp="true"
+                valueHelpOnly="true"
+                value="{EditModel>/Service}"
+                valueHelpRequest="onValueHelpRequest"
+                visible="{= ${EditModel>/InvoiceType} === 'Domestic Service Procurement'}"
+            />
+            <Label
+                id="_IDGenLabel10"
+                required="true"
+                design="Bold"
+                text="Service Group"
+            />
+            <Input
+                id="serviceGroup"
+                value="{EditModel>/ServiceGroup}"
+                visible="{= ${EditModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                enabled="false"
+            />
+            <Label
+                id="_IDGenLabel9"
+                required="true"
+                design="Bold"
+                text="Department"
+            />
+            <Input
+                id="dept"
+                value="{EditModel>/Department}"
+                visible="{= ${EditModel>/InvoiceType} === 'Domestic Service Procurement'}"
+                enabled="false"
+            />
+            <!-- <Label
                 id="_IDGenLabel9"
                 required="true"
                 design="Bold"
@@ -135,7 +191,7 @@
                     key="{ServiceModel>ServiceName}"
                     text="{ServiceModel>ServiceName}"
                 />
-            </ComboBox>
+            </ComboBox> -->
             <Label
                 id="_IDGenLabel6"
                 required="true"
@@ -150,13 +206,59 @@
             <Label
                 id="_IDGenLabel8"
                 design="Bold"
+                required="true"
+                text="Purchase L1 Approver"
+            />
+            <Input
+                id="L1Approver"
+                value="{EditModel>/L1HodApprover}"
+                enabled="false"
+            />
+            <Label
+                id="_IDGenLabel101"
+                design="Bold"
+                required="true"
+                text="Purchase L2 Approver"
+            />
+            <Input
+                id="L2Approver"
+                value="{EditModel>/L2HodApprover}"
+                enabled="false"
+                visible="{= ${EditModel>/L2HodApprover} !== undefined &amp;&amp; ${EditModel>/InvoiceType} === 'Domestic Service Procurement' &amp;&amp; (parseInt(${EditModel>/TotalInvoiceAmount}) === 200000 || parseInt(${EditModel>/TotalInvoiceAmount}) >= 2000000)}"
+            />
+            <Label
+                id="_IDGenLabel102"
+                design="Bold"
+                required="true"
+                text="Purchase L3 Approver"
+            />
+            <Input
+                id="L3Approver"
+                value="{EditModel>/L3HodApprover}"
+                enabled="false"
+                visible="{= ${EditModel>/L3HodApprover} !== undefined &amp;&amp; ${EditModel>/InvoiceType} === 'Domestic Service Procurement' &amp;&amp; (parseInt(${EditModel>/TotalInvoiceAmount}) &gt; 2000000)}"
+            />
+            <Label
+                id="_IDGenLabel130"
+                design="Bold"
+                required="true"
+                text="Finance Approver"
+            />
+            <Input
+                id="finApprover"
+                value="{EditModel>/FinanceApprover}"
+                enabled="false"
+            />
+            <!-- <Label
+                id="_IDGenLabel8"
+                design="Bold"
                 text="Approver"
             />
             <Input
                 id="hod"
                 value="{EditModel>/HodApprover}"
                 enabled="false"
-            />
+            /> -->
             <Label
                 id="_IDGenLabel7"
                 required="true"
